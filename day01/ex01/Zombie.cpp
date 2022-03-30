@@ -10,7 +10,12 @@ Zombie::~Zombie()
 	std::cout << name << ": *DIE IN TERRIBLE CONDITION*" << std::endl;
 }
 
-Zombie::Zombie(std::string zName)
-	: name(zName)
+Zombie::Zombie(void)
+	: name("")
 {
+}
+
+void	Zombie::setName(std::string newName)
+{
+	name = newName;
 }

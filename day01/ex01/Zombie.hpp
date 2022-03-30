@@ -6,9 +6,9 @@ class Zombie {
 		std::string name;
 	public:
 		void	announce(void);
-		Zombie(std::string zName);
+		void	setName(std::string newName);
+		Zombie(void);
 		~Zombie();
 };
 
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
+Zombie*	zombieHorde( int N, std::string name );

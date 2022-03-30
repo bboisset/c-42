@@ -1,6 +1,6 @@
-NAME = megaphone
+NAME = brain
 
-SRCS = megaphone.cpp
+SRCS =	main.cpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 

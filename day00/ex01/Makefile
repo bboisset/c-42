@@ -8,7 +8,7 @@ OBJSRCS = $(SRCS:.cpp=.o)
 
 CC = g++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(OBJSRCS)
 	@echo "\033[33m[Compiliation in progress...]\033"

@@ -1,6 +1,8 @@
-NAME = megaphone
+NAME = zombie
 
-SRCS = megaphone.cpp
+SRCS =	main.cpp \
+		Zombie.cpp \
+		zombieHorde.cpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 

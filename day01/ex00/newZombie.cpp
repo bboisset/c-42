@@ -1,14 +1,15 @@
-# include "Zombie.hpp"
+#include "Zombie.hpp"
 
 /**
- * @brief Crée un nouveau zommbie et le renvoit, pour qu'il soit utilisé en dehors
- * 
- * @param name 
- * @return Zombie* 
+ * @brief Crée un nouveau zombie via une allocation dynamique
+ * et le renvoit
+ *
+ * @param name
+ * @return Zombie*
  */
-Zombie* Zombie::newZombie(std::string name)
+Zombie*	newZombie(std::string name)
 {
-    Zombie  *newZ(name);
+	Zombie *newZ = new Zombie(name);
 
-    return (newZ);
+	return (newZ);
 }
