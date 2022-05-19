@@ -34,7 +34,8 @@ int	PhoneBook::addContact(Contact newContact)
 {
 	//do veification
 	m_contactList.push_back(newContact);
-	//verifier le succes de l ajout
+	//check push succcess
+	
 	return (0);
 }
 
