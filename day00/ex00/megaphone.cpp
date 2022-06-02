@@ -1,10 +1,11 @@
-#include <iostream>
-#include <string>
-#include <vector>
-# include <algorithm>
+# include <iostream>
+# include <string>
+# include <cstring>
+# include <cctype>
+//# include <algorithm> forbidden
 
 /**
- ** @brief Pop name of the program
+ ** @brief Print arguments in a megaphone
  ** 
  ** @param argc 
  ** @param argv 
@@ -12,16 +13,14 @@
  **/
 void	printArgs(int argc, char **argv)
 {
-	std::vector<std::string>			argList(argv + 1, argv + argc);
-	std::vector<std::string>::iterator	it;
-
-	for (it = argList.begin(); it != argList.end(); ++it)
+	for (int i = 1; i < argc; i++)
 	{
-		std::for_each((*it).begin(), (*it).end(), [](char & c){ 
-			c = ::toupper(c);
-		});
-		std::cout << *it;
-		if (argc-- > 2)
+		for (size_t j = 0; j < strlen(argv[i]); j++)
+		{
+			char upperChar = toupper(argv[i][j]);
+			std::cout << upperChar;
+		}
+		if (i < argc - 1)
 			std::cout << " ";
 	}
 }
