@@ -7,7 +7,9 @@
 class PhoneBook
 {
 	private:
-		std::vector<Contact>	m_contactList;
+		Contact	_contactList[8];
+		int		_contactIndex;
+		int		_contactCount;
 
 	public:
 		PhoneBook(void);

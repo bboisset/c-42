@@ -1,47 +1,59 @@
 # include "Contact.hpp"
 # include "PhoneBook.hpp"
 # include <string>
-# include <vector>
 
 std::string	waitUserInput(void)
 {
 	std::string	user_input;
 
-	std::cout << "\x1B[2J\x1B[H" << "Insérer une commande :" << std::endl;
+	std::cout /*<< "\x1B[2J\x1B[H"*/ << "Insérer une commande :" << std::endl;
 	std::cin >> user_input;
 	return (user_input);
 }
 
+std::string askInformation(std::string question)
+{
+	std::string	information;
+
+	std::cout << "\x1B[2J\x1B[H" << question << " :" << std::endl;
+	std::cin >> information;
+	return (information);
+}
 
 Contact	askContactInformation(void)
 {
-	std::vector<std::string>	keys{"Prénom","Nom","Surnom","Numéro de téléphone", "Plus lourd secret"};
-	std::vector<std::string>::iterator	keysIt;
-	std::vector<std::string>	newInfos(5);
-	std::vector<std::string>::iterator	infoIt;
-
-	infoIt = newInfos.begin();
-	for (keysIt = keys.begin(); keysIt != keys.end(); ++keysIt)
-	{
-		std::cout << "\x1B[2J\x1B[H" << *keysIt << " :" << std::endl;
-		std::cin >> *infoIt;
-		++infoIt;
-	}
-	Contact		newContact(newInfos[0], newInfos[1], newInfos[2], newInfos[3], newInfos[4]);
+	std::string firstname = askInformation("Prénom");
+	std::string lastname = askInformation("Nom");
+	std::string nickname = askInformation("Surnom");
+	std::string phone = askInformation("Numéro de téléphone");
+	std::string darkestSecret = askInformation("Plus lourd secret");
+	std::cout << "\x1B[2J\x1B[H";
+	Contact		newContact(firstname, lastname, nickname, phone, darkestSecret);
 	return (newContact);
+}
+
+bool is_digits(const std::string &str)
+{
+	return str.find_first_not_of("0123456789") == std::string::npos;
 }
 
 void	searchUser(PhoneBook	agenda)
 {
-	int	index;
+	std::string	input;
 
 	agenda.display();
 	std::cout << "Index du contact :" << std::endl;
-	std::cin >> index;
-	agenda.search(index);
+	std::cin >> input;
+	if (!is_digits(input))
+		std::cout << "Erreur : " << input << " n'est pas un index valide." << std::endl;
+	else
+	{
+		int index = std::stoi(input);
+		agenda.search(index);
+	}
 }
 
-void	handleUserInput(PhoneBook agenda, std::string userInput)
+void	handleUserInput(PhoneBook & agenda, std::string userInput)
 {
 	if (userInput == "ADD")
 		agenda.addContact(askContactInformation());
@@ -55,13 +67,12 @@ void	handleUserInput(PhoneBook agenda, std::string userInput)
 int main(void)
 {
 	int			run(true);
-	std::string	last_input;
 	PhoneBook	agenda;
 //	PhoneBook	*contact;
 
 	while (run)
 	{
-		last_input = waitUserInput();
+		std::string	last_input = waitUserInput();
 		handleUserInput(agenda, last_input);
 	}
 }

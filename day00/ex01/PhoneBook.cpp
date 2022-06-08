@@ -3,6 +3,7 @@
 # include <string>
 
 PhoneBook::PhoneBook()
+	: _contactIndex(0), _contactCount(0)
 {
 
 }
@@ -13,15 +14,12 @@ int	PhoneBook::search(int index) const
 
 	try
 	{
-		if (index < 0)
+		if (index <= 0)
 			throw	std::invalid_argument("Invalid argument");
-		if (static_cast<std::vector<int>::size_type>(index) > m_contactList.size())
+		if ((index - 1) >= _contactCount)
 			throw	std::invalid_argument("Not enough contact");
 		else
-		{
-			searchUser = m_contactList.at(index);
-			searchUser.display();
-		}
+			_contactList[index - 1].display();
 	}
 	catch(const std::exception& e)
 	{
@@ -32,17 +30,24 @@ int	PhoneBook::search(int index) const
 
 int	PhoneBook::addContact(Contact newContact)
 {
-	//do veification
-	m_contactList.push_back(newContact);
-	//check push succcess
-	
+	if (_contactIndex == 8)
+		_contactIndex = 0;
+	_contactList[_contactIndex] = newContact;
+	std::cout << "inserted contact with index " << _contactIndex << std::endl;
+	_contactIndex++;
+	if (_contactCount < 8)
+		_contactCount++;
 	return (0);
 }
 
 void	PhoneBook::display(void) const
 {
-	for (int i(0); static_cast<std::vector<int>::size_type>(i) < m_contactList.size(); ++i)
+	int	i;
+
+	i = 0;
+	while (i < _contactCount)
 	{
-		m_contactList[i].display();
+		std::cout << std::right << std::setw(13) << i + 1 << "|";
+		_contactList[i++].display();
 	}
 }

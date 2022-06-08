@@ -23,7 +23,7 @@ Contact::Contact(std::string firstName, std::string lastName, std::string nickna
 std::string	formatInfo(std::string info)
 {
 	if (info.length() > 10)
-		return (info.substr(0, 10) + ".");
+		return (info.substr(0, 9) + ".");
 	return (info);
 }
 
@@ -38,4 +38,4 @@ void	Contact::display(void) const
 	std::cout << std::right << std::setw(13) << formatInfo(m_phoneNumber);
 	std::cout << "|";
 	std::cout << std::right << std::setw(13) << formatInfo(m_darkestSecret) << std::endl;
-}//est -ce autorise par la norme, l absence de endl
+}

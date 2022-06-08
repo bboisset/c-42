@@ -1,5 +1,4 @@
 # include <iostream>
-# include <string>
 # include <cstring>
 # include <cctype>
 //# include <algorithm> forbidden
