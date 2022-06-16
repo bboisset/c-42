@@ -63,7 +63,7 @@ int Bureaucrat::decreaseGrade(void)
 	return (_authorizationLevel);
 }
 
-bool	Bureaucrat::signForm(Form & form)
+bool	Bureaucrat::signForm(AForm & form)
 {
 	try {
 		form.beSigned(*this);

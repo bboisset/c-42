@@ -1,8 +1,8 @@
 #ifndef DEF_SHRUBBERY_CREATION_FORM_HPP
 # define DEF_SHRUBBERY_CREATION_FORM_HPP
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form {
+class ShrubberyCreationForm : public AForm {
 	public:
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string const & target);

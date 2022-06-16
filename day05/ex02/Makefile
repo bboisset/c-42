@@ -2,10 +2,12 @@ NAME = Bureaucrat
 
 SRCS =	sources/main.cpp \
 		sources/Bureaucrat.cpp \
-		sources/Form.cpp
+		sources/AForm.cpp \
+		sources/ShrubberyCreationForm.cpp
 
 DEPS =	includes/Bureaucrat.hpp \
-		includes/Form.hpp
+		includes/AForm.hpp \
+		includes/ShrubberyCreationForm.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 

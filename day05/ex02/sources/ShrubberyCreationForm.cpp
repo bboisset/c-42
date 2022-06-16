@@ -1,14 +1,28 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(void)
-	: Form("ShrubberyCreationForm", 145, 137)
+	: AForm("ShrubberyCreationForm", 145, 137, "*blank target*")
 {
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target)
-	: Form("ShrubberyCreationForm", 145, 137)
+	: AForm("ShrubberyCreationForm", 145, 137, target)
 {
-	this->_target = target;
-	return ;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & form)
+	: AForm(form)
+{
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
+{
+}
+
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const & form)
+{
+	if (this != &form)
+		AForm::operator=(form);
+	return (*this);
 }
