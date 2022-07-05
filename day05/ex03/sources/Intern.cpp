@@ -20,9 +20,20 @@ Intern &Intern::operator=(Intern const &intern)
 	return *this;
 }
 
-Form	*Intern::makeForm(std::string const &formName, std::string const &formTarget)
+int		Intern::getFormId(std::string const &formName)
 {
-	Form	*newForm;
+	for (int i = 0; i < 3; i++)
+	{
+		if (formName == _formNames[i])
+			return (i);
+	}
+	return (-1);
+}
 
-
+AForm	*Intern::makeForm(std::string const &formName, std::string const &formTarget)
+{
+	AForm	*newForm;
+	int		formIndex = getFormId(formName);
+	
+	std::cout << "formID : " << formIndex << std::endl;
 }

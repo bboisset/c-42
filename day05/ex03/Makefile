@@ -6,12 +6,14 @@ SRCS =	sources/main.cpp \
 		sources/ShrubberyCreationForm.cpp \
 		sources/RobotomyRequestForm.cpp \
 		sources/PresidentialPardonForm.cpp \
+		sources/Intern.cpp
 
 DEPS =	includes/Bureaucrat.hpp \
 		includes/AForm.hpp \
 		includes/ShrubberyCreationForm.hpp \
 		includes/RobotomyRequestForm.hpp \
-		includes/PresidentialPardonForm.hpp
+		includes/PresidentialPardonForm.hpp \
+		includes/Intern.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 
