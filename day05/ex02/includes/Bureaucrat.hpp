@@ -22,7 +22,8 @@ class Bureaucrat {
 		void setAuthorizationLevel(int authorizationLevel);
 		int	increaseGrade(void);
 		int	decreaseGrade(void);
-		bool	signForm(AForm &form);
+		bool	signForm(AForm & form);
+		bool	executeForm(AForm & form);
 		
 		class GradeTooHighException : public std::exception {
 			public:
@@ -32,7 +33,6 @@ class Bureaucrat {
 			public:
 				virtual const char *what() const throw();
 		};
-		friend std::ostream& operator<<(std::ostream &os, Bureaucrat const &bureaucrat);
 };
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat);

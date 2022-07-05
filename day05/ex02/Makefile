@@ -3,11 +3,15 @@ NAME = Bureaucrat
 SRCS =	sources/main.cpp \
 		sources/Bureaucrat.cpp \
 		sources/AForm.cpp \
-		sources/ShrubberyCreationForm.cpp
+		sources/ShrubberyCreationForm.cpp \
+		sources/RobotomyRequestForm.cpp \
+		sources/PresidentialPardonForm.cpp \
 
 DEPS =	includes/Bureaucrat.hpp \
 		includes/AForm.hpp \
-		includes/ShrubberyCreationForm.hpp
+		includes/ShrubberyCreationForm.hpp \
+		includes/RobotomyRequestForm.hpp \
+		includes/PresidentialPardonForm.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 
@@ -27,9 +31,11 @@ all: $(NAME)
 
 clean:
 	rm -f $(OBJSRCS)
+	rm -f *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f *_shrubbery
 
 re: fclean all
 
