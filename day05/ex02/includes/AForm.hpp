@@ -13,6 +13,10 @@ class AForm {
 		bool	_isSigned;
 		int		_requiredGradeToSign;
 		int		_requiredGradeToExecute;
+
+		/** Member functions **/
+		virtual void formAction(void) const = 0;
+
 	public:
 		AForm(void);
 		AForm(std::string const & name, int requiredGradeToSign, int requiredGradeToExecute, std::string const &target);
@@ -22,6 +26,7 @@ class AForm {
 
 		/** Member functions **/
 		void	beSigned(Bureaucrat const &bureaucrat);
+		void	execute(Bureaucrat const &executor) const;
 
 		/** Getters */
 		std::string	getName(void) const;
@@ -39,9 +44,10 @@ class AForm {
 			public:
 				virtual const char *what() const throw();
 		};
-
-		/** Operators **/
-		friend std::ostream& operator<<(std::ostream &os, AForm const &form);
+		class FormNotSigned : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
 };
 
 std::ostream &operator<<(std::ostream &os, AForm const &form);

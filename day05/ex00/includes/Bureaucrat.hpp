@@ -28,7 +28,6 @@ class Bureaucrat {
 			public:
 				virtual const char *what() const throw();
 		};
-		friend std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat);
 };
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat);

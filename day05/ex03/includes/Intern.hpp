@@ -1,15 +1,20 @@
 #ifndef DEF_INTERN_HPP
 # define DEF_INTERN_HPP
-# include "./AForm.hpp"
+# include "AForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "PresidentialPardonForm.hpp"
 # include <string>
 
 class Intern {
 	private:
-		std::string	_formNames[3] = {"robotomy request", "shrubbery creation", "presidential pardon"};
+		int	_getFormIndex(std::string const &formName) const;
+		void (*_formConstructors[3])() = {};
+		std::string	_formNames[3];
 	public:
-		Intern();
+		Intern(void);
 		Intern(Intern const &src);
-		~Intern();
+		~Intern(void);
 		Intern	&operator=(Intern const &intern);
 		AForm	*makeForm(std::string const &formName, std::string const &formTarget);
 		int		getFormId(std::string const &formName);

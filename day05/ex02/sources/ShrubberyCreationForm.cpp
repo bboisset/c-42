@@ -26,3 +26,30 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 		AForm::operator=(form);
 	return (*this);
 }
+
+void	ShrubberyCreationForm::buildTreeFile(void) const
+{
+	std::string	filename(this->getTarget() + "_shrubbery");
+	std::ofstream treeFile;
+
+	treeFile.open(filename, std::ofstream::out | std::ofstream::app);
+	//Faut il verifier si le fichier existe deja
+	//si oui le supprimer et recommencer du debut ?
+
+	treeFile << "               ,@@@@@@@,             " << std::endl;
+	treeFile << "       ,,,.   ,@@@@@@/@@,  .oo8888o.  " << std::endl;
+	treeFile << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o " << std::endl;
+	treeFile << "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
+	treeFile << "  %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888' " << std::endl;
+	treeFile << "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88' " << std::endl;
+	treeFile << "  `&%\\ ` /%&'    |.|        \\ '|8'    " << std::endl;
+	treeFile << "      |o|        | |         | |      " << std::endl;
+	treeFile << "      |.|        | |         | |      " << std::endl;
+	treeFile << "  \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/" << std::endl;
+	treeFile.close();
+}
+
+void	ShrubberyCreationForm::formAction(void) const
+{
+	this->buildTreeFile();
+}

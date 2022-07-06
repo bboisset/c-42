@@ -1,0 +1,83 @@
+[33mcommit 8c7b6bea70c33181c38f5098701f79c5c466eab9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: bboisset <bboisset@student.42.fr>
+Date:   Tue Jul 5 18:49:17 2022 +0200
+
+    rework
+
+[33mcommit 8f623a56daa79d8a6053c6cae85f0bc737a2ef3e[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Wed Jun 22 13:21:18 2022 +0200
+
+    done ex03
+
+[33mcommit 73c1fe3a46268fa12a40d84e770bed3a8ed7fa4a[m
+Author: bboisset <bboisset@student.42.fr>
+Date:   Thu Jun 16 20:18:13 2022 +0200
+
+    remove objects
+
+[33mcommit 4e4ebd004376c4524a4826af271ff50084be822a[m
+Author: bboisset <bboisset@student.42.fr>
+Date:   Thu Jun 16 20:17:45 2022 +0200
+
+    compiling ex02 day05
+
+[33mcommit 2ff15062793f2dd354937d90c2c539d576bdb7e2[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Thu Jun 16 19:49:35 2022 +0200
+
+    day 5
+
+[33mcommit e5cc93c27e6daf101bc7e0e1494185550dc9c9a8[m
+Author: Baptiste BOISSET <bboisset@e1r11p18.42.fr>
+Date:   Wed Jun 15 15:20:22 2022 +0200
+
+    d
+
+[33mcommit 28719f02224ef41f2d6f5cc7f30eb253bab203aa[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Wed Jun 15 13:45:52 2022 +0200
+
+    day 5
+
+[33mcommit ebcf9a265b20b823d4f19d92666c1e59a6222681[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Wed Jun 8 16:07:29 2022 +0200
+
+    done ex01 module00
+
+[33mcommit 2268f03e0e92eff5120bf860ac1d59d04bf7df97[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Thu Jun 2 14:17:55 2022 +0200
+
+    fix megaphone
+
+[33mcommit ea20baa7407c65481de1bbac5d2c452ec1c9a78a[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Thu Jun 2 14:17:00 2022 +0200
+
+    fix megaphone|
+
+[33mcommit 1e65ba20957b5e94642353cfb6e18e385cd83ca9[m
+Author: bboisset <bboisset@student.42.fr>
+Date:   Thu May 19 12:20:58 2022 +0200
+
+    x
+
+[33mcommit ddab74bcc6b559afd3e5f872f9556c58fe50bc9a[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Wed Mar 30 21:04:23 2022 +0200
+
+    day02
+
+[33mcommit eda22b33ee75e2e85c608b6b18bd551e8f172a85[m
+Author: BoissetMCP <boisset14000@gmail.com>
+Date:   Thu Mar 17 01:53:37 2022 +0100
+
+    work on day 01
+
+[33mcommit d12a1c2dbe18b5c4fb494c1605ae7c6f81f69457[m
+Author: bboisset <bboisset@student.42.fr>
+Date:   Thu Mar 17 00:05:33 2022 +0100
+
+    first commit

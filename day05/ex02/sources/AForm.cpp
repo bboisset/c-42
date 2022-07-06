@@ -37,9 +37,29 @@ void	AForm::beSigned(Bureaucrat const &bureaucrat)
 	_isSigned = true;
 }
 
+/**
+ * @brief Verify if current Bureaucrat can execute current Form
+ * and form is signed. If true execute form.
+ * 
+ * @param bureaucrat 
+ */
+void	AForm::execute(Bureaucrat const &bureaucrat) const
+{
+	if (_isSigned == false)
+		throw AForm::FormNotSigned();
+	if (bureaucrat.getGrade() > _requiredGradeToExecute)
+		throw AForm::GradeTooLowException();
+	this->formAction();
+}
+
 std::string	AForm::getName(void) const 
 {
 	return (_name);
+}
+
+std::string AForm::getTarget(void) const
+{
+	return (_target);
 }
 
 bool	AForm::getIsSigned(void) const
@@ -65,6 +85,11 @@ const char	*AForm::GradeTooHighException::what() const throw()
 const char	*AForm::GradeTooLowException::what() const throw()
 {
 	return ("Bureaucrat grade too is too low");
+}
+
+const char	*AForm::FormNotSigned::what() const throw ()
+{
+	return ("Form need to be sign for execution");
 }
 
 std::ostream	&operator<<(std::ostream &os, AForm const &form)

@@ -1,7 +1,18 @@
 #include "../includes/Intern.hpp"
 
-Intern::Intern()
+Intern::Intern(void)
+	: _formConstructors{
+		&Intern::_makeRobotomyRequestForm,
+		ShrubberyCreationForm::ShrubberyCreationForm,
+		PresidentialPardonForm::PresidentialPardonForm
+	}, 
+	_formNames{
+		"ShrubberyCreationForm",
+		"RobotomyRequestForm",
+		"PresidentialPardonForm"
+	}
 {
+	/** Silence is golden **/
 }
 
 Intern::Intern(Intern const &src)
@@ -9,7 +20,7 @@ Intern::Intern(Intern const &src)
 	*this = src;
 }
 
-Intern::~Intern()
+Intern::~Intern(void)
 {
 }
 
@@ -20,11 +31,10 @@ Intern &Intern::operator=(Intern const &intern)
 	return *this;
 }
 
-int		Intern::getFormId(std::string const &formName)
+int	Intern::_getFormIndex(std::string const &formName) const
 {
-	for (int i = 0; i < 3; i++)
-	{
-		if (formName == _formNames[i])
+	for (int i = 0; i < 3; i++) {
+		if (this->_formNames[i] == formName)
 			return (i);
 	}
 	return (-1);
@@ -33,7 +43,8 @@ int		Intern::getFormId(std::string const &formName)
 AForm	*Intern::makeForm(std::string const &formName, std::string const &formTarget)
 {
 	AForm	*newForm;
-	int		formIndex = getFormId(formName);
-	
-	std::cout << "formID : " << formIndex << std::endl;
+	int		formIndex;
+
+	formIndex = this->_getFormIndex(formName);
+	std::cout << "Intern::makeForm: formIndex = " << formIndex << std::endl;
 }
