@@ -6,7 +6,7 @@
  ** 
  **/
 Point::Point(void)
-	: m_x(0), m_y(0)
+	: _x(0), _y(0)
 {
 }
 
@@ -18,7 +18,7 @@ Point::Point(void)
  ** @param pointB newPoint assign to y
  **/
 Point::Point(const Fixed &pointA, const Fixed &pointB)
-	: m_x(pointA), m_y(pointB)
+	: _x(pointA), _y(pointB)
 {
 }
 
@@ -30,18 +30,18 @@ Point&	Point::operator=(const Point &point)
 {
 	if (this != &point)
 	{
-		const_cast<Fixed&>(m_x) = point.m_x;
-		const_cast<Fixed&>(m_y) = point.m_y;
+		const_cast<Fixed&>(_x) = point._x;
+		const_cast<Fixed&>(_y) = point._y;
 	}
 	return (*this);
 }
 
 Fixed	Point::getX(void) const
 {
-	return (m_x);
+	return (_x);
 }
 
 Fixed	Point::getY(void) const
 {
-	return (m_y);
+	return (_y);
 }

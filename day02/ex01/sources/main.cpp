@@ -1,4 +1,3 @@
-# include <iostream>
 # include "../includes/Fixed.hpp"
 
 int	main(void)

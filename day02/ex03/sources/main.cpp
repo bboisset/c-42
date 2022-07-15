@@ -1,44 +1,28 @@
 # include "../includes/Point.hpp"
 
-/**
- ** @brief Determine wethe the given point is at 
- ** the left of the given line ab
- ** 
- ** @param a 
- ** @param b 
- ** @param point 
- ** @return 
- **/
-Fixed	isLeft(Point const a, Point const b, Point point)
+Fixed sign(Point p1, Point p2, Point p3)
 {
-	return (b.getX() - a.getX()) * (point.getY() - a.getY())
-		- (b.getY() - a.getY()) * (point.getX() - a.getX());
+	return (p1.getX() - p3.getX()) * (p2.getY() - p3.getY()) - (p2.getX() - p3.getX()) * (p1.getY() - p3.getY());
 }
 
 /**
- ** @brief Determine wether the given point is inside
- ** a triangle, defined by vertices A, B and C.
- ** 
- ** @param a Corner A of the triangle
- ** @param b Corner B of the triangle
- ** @param c Corner C of the triangle
- ** @param point A point inside or outisde the triangle
- ** @return true if the point is inside the triangle, false otherwise.
- **/
-bool	bsp(Point const a, Point const b, Point const c, Point point)
+ * @brief Determine if a point is inside a triangle.
+ * 
+ * @param a Corner A of the triangle
+ * @param b Corner B of the triangle
+ * @param c Corner C of the triangle
+ * @param point A point on the 2d plan
+ * @return true if point is inside, false otherwise.
+ */
+bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	Fixed	det;
+	Fixed	d1 = sign(point, a, b);
+	Fixed	d2 = sign(point, b, c);
+	Fixed	d3 = sign(point, c, a);
+	bool	hasNegative = (d1 < 0) || (d2 < 0) || (d3 < 0);
+	bool	hasPositive = (d1 > 0) || (d2 > 0) || (d3 > 0);
 
-	det = (b.getX() - a.getX()) * (c.getY() - a.getY())
-		- (b.getY() - a.getY()) * (c.getX() - a.getX());
-	return (
-		det * ((b.getX() - a.getX()) * (point.getY() - a.getY())
-			- (b.getY() - a.getY()) * (point.getX() - a.getX())) >= 0 &&
-		det * ((c.getX() - b.getX()) * (point.getY() - b.getY() )
-			- (c.getY() - b.getY()) * (point.getX() - b.getX())) >= 0 &&
-		det * ((a.getX() - c.getX()) * (point.getY() - c.getY())
-			- (a.getY() - c.getY()) * (point.getX() - c.getX())) >= 0
-	);
+	return (!(hasNegative && hasPositive));
 }
 
 int main(void)
@@ -53,7 +37,7 @@ int main(void)
 	std::cout << "We also have two points, internalPoint (1, 1) and externalPoint (3, 3)." << std::endl;
 	std::cout << "Is internalPoint inside of the triangle? " << std::endl
 		<< (bsp(a, b, c, internalPoint) ? "yes" : "no") << std::endl;
-	std::cout << "Is externalPoint outside of the triangle? " << std::endl
-		<< (bsp(a, b, c, externalPoint) ? "no" : "yes") << std::endl;
+	std::cout << "Is externalPoint inside of the triangle? " << std::endl
+		<< (bsp(a, b, c, externalPoint) ? "yes" : "no") << std::endl;
 	return (0);
 }

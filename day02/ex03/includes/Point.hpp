@@ -2,8 +2,8 @@
 
 class Point {
 	private:
-		const Fixed		m_x;
-		const Fixed		m_y;
+		const Fixed		_x;
+		const Fixed		_y;
 	public:
 		Point(void);
 		Point(const Fixed &pointA, const Fixed &pointB);

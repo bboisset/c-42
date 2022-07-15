@@ -6,8 +6,8 @@
 
 class Fixed {
 	private:
-		int	m_value;
-		static const int	m_bytes;
+		int	_value;
+		static const int	_bytes;
 
 	public:
 		Fixed();

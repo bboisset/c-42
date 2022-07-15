@@ -6,21 +6,22 @@
 
 class Fixed {
 	private:
-		int	m_value;
-		static const int	m_bytes;
+		int	_value;
+		static const int	_bytes;
 
 	public:
 		Fixed();
 		Fixed(const int newVal);
 		Fixed(const float newVal);
-		Fixed(const Fixed &fixed);
+		Fixed(const Fixed & fixed);
 		//Comparator operators
-		bool	operator>(const Fixed &fixed) const;
-		bool	operator>=(const Fixed &fixed) const;
+		bool	operator<(const Fixed & fixed) const;
+		bool	operator>(const Fixed & fixed) const;
+		bool	operator>=(const Fixed & fixed) const;
 		//Assignation operators
-		Fixed&	operator=(Fixed const& fixed);
-		Fixed	operator-=(Fixed const& a);
-		Fixed	operator*=(Fixed const& a);
+		Fixed&	operator=(Fixed const & fixed);
+		Fixed	operator-=(Fixed const & a);
+		Fixed	operator*=(Fixed const & a);
 		~Fixed();
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
