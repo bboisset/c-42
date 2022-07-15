@@ -5,30 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 11:53:24 by bboisset          #+#    #+#             */
-/*   Updated: 2022/07/08 11:53:26 by bboisset         ###   ########.fr       */
+/*   Created: 2022/07/08 11:19:29 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/08 11:23:49 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/HumanA.hpp"
-#include "../includes/HumanB.hpp"
+# include "../includes/Zombie.hpp"
 
 int main(void)
 {
+
+	std::cout << "Mixing first ingredients, to make Zombie 1 (Pierre) :" << std::endl;
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+		Zombie	zombie1("Pierre");
+
+		zombie1.announce();
 	}
+	std::cout << "Mixing second ingredients, to make Zombie 2 (Paul) using newZombie dynamic allocation" << std::endl;
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
+		Zombie	*zombie2 = newZombie("Paul");
+		
+		zombie2->announce();
+		delete zombie2;
 	}
-	return 0;
+	std::cout << "Mixing last ingreditents, to make Zombie 3 (Jack) with randomChump()" << std::endl;
+	{
+		randomChump("Jack");
+	}
+	return (0);
 }

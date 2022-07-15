@@ -1,7 +1,9 @@
-NAME = karenFilter 
+NAME = harlFilter 
 
 SRCS =	sources/main.cpp \
-		sources/Karen.cpp
+		sources/Harl.cpp
+
+DEPS =	includes/Harl.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 
@@ -9,16 +11,13 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-$(NAME): $(OBJSRCS)
+$(NAME): $(OBJSRCS) $(DEPS)
 	@echo "\033[33m[Compiliation in progress...]\033"
-	${CC} $(CFLAGS) $(OBJSRCS) -o $(NAME)
-	@echo "\033[32m[Success !]\"
+	$(CC) $(CFLAGS) $(OBJSRCS) -o $(NAME)
+	@echo "\033[32m[Success !]"
 
 all: $(NAME)
 
-#TODO utilité ?
-#.cpp.o:
-#	$(CC) $(CFLAGS) -c $<
 
 clean:
 	rm -f $(OBJSRCS)

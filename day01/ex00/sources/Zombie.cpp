@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 11:53:58 by bboisset          #+#    #+#             */
-/*   Updated: 2022/07/15 11:13:24 by bboisset         ###   ########.fr       */
+/*   Created: 2022/07/08 11:21:00 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/15 10:01:51 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEF_WEAPON_HPP
-# define DEF_WEAPON_HPP
-# include <iostream>
-# include <string>
+#include "../includes/Zombie.hpp"
 
-class Weapon
+void Zombie::announce(void)
 {
-	private:
-		std::string _type;
-	public:
-		std::string	getType(void) const;
-		void	setType(std::string newType);
-		Weapon(std::string extType);
-};
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-#endif
+Zombie::~Zombie()
+{
+	std::cout << _name << ": *DIE IN TERRIBLE CONDITION*" << std::endl;
+}
+
+Zombie::Zombie(std::string zName)
+	: _name(zName)
+{
+}

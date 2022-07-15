@@ -1,6 +1,9 @@
-NAME = brain
+NAME = Harl
 
-SRCS =	main.cpp
+SRCS =	sources/main.cpp \
+		sources/Harl.cpp
+
+DEPS = includes/Harl.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 
@@ -8,7 +11,7 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-$(NAME): $(OBJSRCS)
+$(NAME): $(OBJSRCS) $(DEPS)
 	@echo "\033[33m[Compiliation in progress...]\033"
 	$(CC) $(CFLAGS) $(OBJSRCS) -o $(NAME)
 	@echo "\033[32m[Success !]"

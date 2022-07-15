@@ -4,14 +4,20 @@
 # include <iostream>
 # include <map>
 
-class Karen {
+class Harl {
 	private:
+		std::string	_maxLevel;
+		int	_maxLevelVal;
+
 		void	debug(void);
 		void	info(void);
 		void	warning(void);
 		void	error(void);
+		void 	insignificant(void);
+
+		int		getLevelIndex(std::string level);
 	public:
-		void	complain(std::string level);
-		Karen();
+		void	complain();
+		Harl(std::string maxLevel);
 };
 #endif

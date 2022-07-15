@@ -1,15 +1,27 @@
-# include "../includes/Weapon.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 11:53:32 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/15 11:13:07 by bboisset         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/Weapon.hpp"
 
 void	Weapon::setType(std::string newType)
 {
-	type = newType;
+	_type = newType;
 }
 
-void	Weapon::getType(void) const
+std::string	Weapon::getType(void) const
 {
-	std:: cout << type << std::endl;
+	return (_type);
 }
 
 Weapon::Weapon(std::string extType)
-	: type(extType)
+	: _type(extType)
 {}

@@ -1,22 +1,19 @@
-#include "../includes/Karen.hpp"
+#include "../includes/Harl.hpp"
 
-void	runKaren(std::string authorized_level)
+void	runHarl(std::string authorized_level)
 {
-	Karen	karen(authorized_level);
+	Harl	harl(authorized_level);
 
-	karen.complain("debug");
-	karen.complain("info");
-	karen.complain("warning");
-	karen.complain("error");
+	harl.complain();
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Only one argument is required" << std::endl;
+		std::cerr << "Usage: ./harlFilter LEVEL" << std::endl;
 		return (0);
 	}
-	runKaren(argv[1]);
+	runHarl(argv[1]);
 	return (0);
 }

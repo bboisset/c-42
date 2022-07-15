@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 11:53:58 by bboisset          #+#    #+#             */
-/*   Updated: 2022/07/15 11:13:24 by bboisset         ###   ########.fr       */
+/*   Created: 2022/07/08 11:55:10 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/15 09:44:44 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEF_WEAPON_HPP
-# define DEF_WEAPON_HPP
-# include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
 # include <string>
+# include <iostream>
+# include <map>
 
-class Weapon
-{
+class Harl {
 	private:
-		std::string _type;
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+		int		getLevelIndex(std::string level);
 	public:
-		std::string	getType(void) const;
-		void	setType(std::string newType);
-		Weapon(std::string extType);
+		void	complain(std::string level);
+		Harl();
 };
-
 #endif

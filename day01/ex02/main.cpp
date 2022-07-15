@@ -1,10 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 11:57:26 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/14 13:32:49 by bboisset         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include <string>
 # include <iostream>
 
-/**
- * @todo Le programme semble fonctionner à 100%, mais la valeur de string
- * semble differente de stringPTR et stringRef (dernier element)
- */
 void	brainAddress(void)
 {
 	std::string		speech("HI THIS IS BRAIN");

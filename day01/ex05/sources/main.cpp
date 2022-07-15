@@ -1,16 +1,28 @@
-# include "../includes/Karen.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 11:55:06 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/14 15:02:30 by bboisset         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/Harl.hpp"
 
 int main(void)
 {
-	Karen	karen;
+	Harl	harl;
 
 	std::cout << "Debug message : " << std::endl;
-	karen.complain("debug");
+	harl.complain("debug");
 	std::cout << "Info message : " << std::endl; 
-	karen.complain("info");
+	harl.complain("info");
 	std::cout << "Warning message : " << std::endl; 
-	karen.complain("warning");
+	harl.complain("warning");
 	std::cout << "Error message : " << std::endl; 
-	karen.complain("error");
+	harl.complain("error");
 	return (0);
 }

@@ -5,30 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 11:53:24 by bboisset          #+#    #+#             */
-/*   Updated: 2022/07/08 11:53:26 by bboisset         ###   ########.fr       */
+/*   Created: 2022/07/08 11:29:17 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/14 13:38:54 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/HumanA.hpp"
-#include "../includes/HumanB.hpp"
+#include "../includes/Zombie.hpp"
 
+void	loopZombies(Zombie *zombieHorde, int zombieCount)
+{
+	for (int i(0); i < zombieCount; i++)
+		zombieHorde[i].announce();
+}
+
+/**
+ * @brief Allocate X zombie in single time
+ * - Announce each of theme
+ * - Delete thems
+ */
 int main(void)
 {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	return 0;
+	int		zombieCount(10);
+	Zombie	*horde = zombieHorde(zombieCount, "Alvin");
+
+	std::cout << "10 Zombies in production" << std::endl;
+	loopZombies(horde, zombieCount);
+	delete [] horde;
+	return (0);
 }

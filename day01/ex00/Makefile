@@ -1,9 +1,11 @@
 NAME = zombie
 
-SRCS =	main.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		Zombie.cpp
+SRCS =	sources/main.cpp \
+		sources/newZombie.cpp \
+		sources/randomChump.cpp \
+		sources/Zombie.cpp
+
+DEPS =	includes/Zombie.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 
@@ -11,15 +13,12 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-$(NAME): $(OBJSRCS)
+$(NAME): $(OBJSRCS) $(DEPS)
 	@echo "\033[33m[Compiliation in progress...]\033"
 	$(CC) $(CFLAGS) $(OBJSRCS) -o $(NAME)
 	@echo "\033[32m[Success !]"
 
 all: $(NAME)
-
-.cpp.o:
-	$(CC) $(CFLAGS) -c $<
 
 clean:
 	rm -f $(OBJSRCS)

@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 11:53:58 by bboisset          #+#    #+#             */
-/*   Updated: 2022/07/15 11:13:24 by bboisset         ###   ########.fr       */
+/*   Created: 2022/07/08 11:29:26 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/14 13:38:11 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEF_WEAPON_HPP
-# define DEF_WEAPON_HPP
-# include <iostream>
-# include <string>
+#include "../includes/Zombie.hpp"
 
-class Weapon
+/**
+ * @brief Create a Zombie Horde in a single allocation
+ * 
+ * @param N Number of zombie to allocate
+ * @param name Name of all zombies
+ * @return Zombie* Pointer on zombies
+ */
+Zombie*	zombieHorde( int N, std::string name )
 {
-	private:
-		std::string _type;
-	public:
-		std::string	getType(void) const;
-		void	setType(std::string newType);
-		Weapon(std::string extType);
-};
+	Zombie	*horde = new Zombie[N];
 
-#endif
+	for (int i(0); i < N; i++)
+		horde[i].setName(name);
+	return (horde);
+}

@@ -1,15 +1,26 @@
-# include "../includes/HumanB.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 11:53:11 by bboisset          #+#    #+#             */
+/*   Updated: 2022/07/15 13:11:16 by bboisset         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/HumanB.hpp"
 
 void HumanB::attack(void)
 {
-	if (weapon)
+	if (_weapon)
 	{
-		std::cout << name << " attacks with their ";
-		weapon->getType();
+		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 	}
 	else
 	{
-		std::cout << name << " can't attack without a weapon" << std::endl;
+		std::cout << _name << " can't attack without a weapon" << std::endl;
 	}
 }
 
@@ -21,10 +32,14 @@ void HumanB::attack(void)
  */
 void	HumanB::setWeapon(Weapon& newWeapon)
 {
-	weapon = &newWeapon;
+	_weapon = &newWeapon;
 }
 
 HumanB::HumanB(std::string extName)
-	: name(extName), weapon(0)
+	: _name(extName), _weapon(0)
+{
+}
+
+HumanB::~HumanB(void)
 {
 }
