@@ -6,12 +6,12 @@
 class DiamondTrap : public FragTrap, public ScavTrap
 {
 	private:
-		std::string	m_name;
-		static int	m_maxHitPoints;
-		static int	m_minHitPoints;
-		static int	m_minEnergyPoints;
-		static int	m_maxEnergyPoints;
-		static int	m_defaultAttackDamage;
+		std::string	_name;
+		static int	_maxHitPoints;
+		static int	_minHitPoints;
+		static int	_minEnergyPoints;
+		static int	_maxEnergyPoints;
+		static int	_defaultAttackDamage;
 	public:
 		DiamondTrap();
 		DiamondTrap(std::string name);

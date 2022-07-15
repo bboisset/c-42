@@ -1,32 +1,32 @@
 # include "../includes/FragTrap.hpp"
 
-int	FragTrap::m_maxHitPoints = 100;
-int	FragTrap::m_minHitPoints = 0;
-int	FragTrap::m_minEnergyPoints = 0;
-int	FragTrap::m_maxEnergyPoints = 100;
-int	FragTrap::m_defaultAttackDamage = 30;
+int	FragTrap::_maxHitPoints = 100;
+int	FragTrap::_minHitPoints = 0;
+int	FragTrap::_minEnergyPoints = 0;
+int	FragTrap::_maxEnergyPoints = 100;
+int	FragTrap::_defaultAttackDamage = 30;
 
 FragTrap::FragTrap()
 	: ClapTrap()
 {
 	std::cout << "FragTrap default constructor called" << std::endl;
-	m_hitPoints = m_maxHitPoints;
-	m_energyPoints = m_maxEnergyPoints;
-	m_attackDamage = m_defaultAttackDamage;
+	_hitPoints = _maxHitPoints;
+	_energyPoints = _maxEnergyPoints;
+	_attackDamage = _defaultAttackDamage;
 }
 
 FragTrap::FragTrap(std::string name)
 	: ClapTrap(name)
 {
 	std::cout << "FragTrap name constructor called" << std::endl;
-	m_hitPoints = m_maxHitPoints;
-	m_energyPoints = m_maxEnergyPoints;
-	m_attackDamage = m_defaultAttackDamage;
+	_hitPoints = _maxHitPoints;
+	_energyPoints = _maxEnergyPoints;
+	_attackDamage = _defaultAttackDamage;
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap " << m_name << " has been destroyed" << std::endl;
+	std::cout << "FragTrap " << _name << " has been destroyed" << std::endl;
 }
 
 void	FragTrap::getInformation() const
@@ -37,5 +37,5 @@ void	FragTrap::getInformation() const
 
 void	FragTrap::highFiveGuys()
 {
-	std::cout << "FragTrap " << m_name << ": high five guys ?" << std::endl;
+	std::cout << "FragTrap " << _name << ": high five guys ?" << std::endl;
 }

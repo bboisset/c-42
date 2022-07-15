@@ -6,19 +6,19 @@
 class ClapTrap
 {
 	protected:
-		std::string	m_name;
-		int			m_hitPoints;//Life points
-		int			m_energyPoints;
-		int			m_attackDamage;
+		std::string	_name;
+		int			_hitPoints;//Life points
+		int			_energyPoints;
+		int			_attackDamage;
 		
 		bool		doAction(int cost = 1);
 		void		information() const;
 	private:
-		static int	m_maxHitPoints;
-		static int	m_minHitPoints;
-		static int	m_minEnergyPoints;
-		static int	m_maxEnergyPoints;
-		static	int	m_defaultAttackDamage;
+		static int	_maxHitPoints;
+		static int	_minHitPoints;
+		static int	_minEnergyPoints;
+		static int	_maxEnergyPoints;
+		static	int	_defaultAttackDamage;
 		
 	public:
 		ClapTrap();

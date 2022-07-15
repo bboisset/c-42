@@ -1,28 +1,28 @@
 # include "../includes/ClapTrap.hpp"
 
-int	ClapTrap::m_maxHitPoints = 10;
-int	ClapTrap::m_minHitPoints = 0;
-int	ClapTrap::m_minEnergyPoints = 0;
-int	ClapTrap::m_maxEnergyPoints = 10;
-int	ClapTrap::m_defaultAttackDamage = 0;
+int	ClapTrap::_maxHitPoints = 10;
+int	ClapTrap::_minHitPoints = 0;
+int	ClapTrap::_minEnergyPoints = 0;
+int	ClapTrap::_maxEnergyPoints = 10;
+int	ClapTrap::_defaultAttackDamage = 0;
 
 ClapTrap::ClapTrap()
-	: m_name(""), m_hitPoints(m_maxHitPoints), m_energyPoints(m_maxEnergyPoints),
-	m_attackDamage(0)
+	: _name(""), _hitPoints(_maxHitPoints), _energyPoints(_maxEnergyPoints),
+	_attackDamage(0)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
-	: m_name(name), m_hitPoints(m_maxHitPoints), m_energyPoints(m_maxEnergyPoints),
-	m_attackDamage(0)
+	: _name(name), _hitPoints(_maxHitPoints), _energyPoints(_maxEnergyPoints),
+	_attackDamage(0)
 {
 	std::cout << "ClapTrap name constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << m_name << " has been destroyed" << std::endl;
+	std::cout << "ClapTrap " << _name << " has been destroyed" << std::endl;
 }
 
 /**
@@ -35,17 +35,17 @@ ClapTrap::~ClapTrap()
  **/
 bool	ClapTrap::doAction(int cost)
 {
-	if (m_energyPoints - cost == m_minEnergyPoints)
+	if (_energyPoints - cost == _minEnergyPoints)
 	{
-		std::cout << "ClapTrap " << m_name << " is out of energy points" << std::endl;
+		std::cout << "ClapTrap " << _name << " is out of energy points" << std::endl;
 		return (false);
 	}
-	if (m_hitPoints == m_minHitPoints)
+	if (_hitPoints == _minHitPoints)
 	{
-		std::cout << "ClapTrap " << m_name << " is out of hit points" << std::endl;
+		std::cout << "ClapTrap " << _name << " is out of hit points" << std::endl;
 		return (false);
 	}
-	m_energyPoints -= cost;
+	_energyPoints -= cost;
 	return (true);
 }
 
@@ -60,30 +60,30 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (doAction() == false)
 		return ;
-	std::cout << "ClapTrap " << m_name << " attacks " << target 
-		<< ", causing " << m_attackDamage << " points of damage !" << std::endl;
+	std::cout << "ClapTrap " << _name << " attacks " << target 
+		<< ", causing " << _attackDamage << " points of damage !" << std::endl;
 	
 }
 
 /**
  ** @brief ClapTrape take (amount) dammage
- ** If m_hitPoints is lower than 0, set it to 0
+ ** If _hitPoints is lower than 0, set it to 0
  ** 
  ** @param amount 
  **/
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	m_hitPoints -= amount;
-	std::cout  << m_name << " takes " << amount << " points of damage !" << std::endl;
-	if (m_hitPoints < m_minHitPoints)
+	_hitPoints -= amount;
+	std::cout  << _name << " takes " << amount << " points of damage !" << std::endl;
+	if (_hitPoints < _minHitPoints)
 	{
-		m_hitPoints = m_minHitPoints;
-		std::cout << "ClapTrap " << m_name << " is out of hit points" << std::endl;
+		_hitPoints = _minHitPoints;
+		std::cout << "ClapTrap " << _name << " is out of hit points" << std::endl;
 	}
 }
 
 /**
- ** @brief Repairs the ClapTrap. Add amount to m_hitPoints
+ ** @brief Repairs the ClapTrap. Add amount to _hitPoints
  ** ClapTrap should be able to do an action before being repaired
  ** Cost 1 energy point
  ** 
@@ -93,17 +93,17 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (doAction() == false)
 		return ;
-	m_hitPoints += amount;
-	std::cout << "ClapTrap " << m_name << " has been repaired, restoring "
+	_hitPoints += amount;
+	std::cout << "ClapTrap " << _name << " has been repaired, restoring "
 		<< amount << " hit points !" << std::endl;
-	if (m_hitPoints > m_maxHitPoints)
-		m_hitPoints = m_maxHitPoints;
+	if (_hitPoints > _maxHitPoints)
+		_hitPoints = _maxHitPoints;
 }
 
 void	ClapTrap::information() const
 {
-	std::cout << m_name << " has " << m_hitPoints << " hit points, "
-		<< m_energyPoints << " energy points, " << m_attackDamage << " attack damage." << std::endl;
+	std::cout << _name << " has " << _hitPoints << " hit points, "
+		<< _energyPoints << " energy points, " << _attackDamage << " attack damage." << std::endl;
 }
 
 /**
