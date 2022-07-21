@@ -1,17 +1,25 @@
 #include "../includes/convert.hpp"
 
-int	stringToInt(std::string litteral)
+void	stringToInt(std::string litteral)
 {
+	std::cout << "int: ";
 	if (!(isNumber(litteral) || isNumberWithDecimal(litteral)))
-		return (0);
-	return (std::stoi(litteral));
+	{
+		std::cout << "impossible" << std::endl;
+		return ;
+	}
+	std::cout << std::stoi(litteral) << std::endl;
 }
 
-double	stringToDouble(std::string litteral)
+void	stringToDouble(std::string litteral)
 {
+	std::cout << "double: ";
 	if (!(isNumber(litteral) || isNumberWithDecimal(litteral)))
-		return (0);
-	return (std::stod(litteral));
+	{
+		std::cout << "impossible" << std::endl;
+		return ;
+	}
+	std::cout << std::stod(litteral) << "f" << std::endl;
 }
 
 /**
@@ -21,24 +29,37 @@ double	stringToDouble(std::string litteral)
  * @param litteral 
  * @return char 
  */
-char	stringToChar(std::string litteral)
+void	stringToChar(std::string litteral)
 {
-	if (litteral.length() != 1)
-		return (0);
-	return (litteral[0]);
+	std::cout << "char: ";
+	if (litteral == "0")
+	{
+		std::cout <<  "Non displayable" << std::endl;
+		return ;
+	}
+	if (litteral.length() > 1)
+	{
+		std::cout << "'*'" << std::endl;
+		return ;
+	}
+	std::cout << "'" << litteral[0] << "'" << std::endl;
 }
 
-float	stringToFloat(std::string litteral)
+void	stringToFloat(std::string litteral)
 {
+	std::cout << "float: ";
 	if (!(isNumber(litteral) || isNumberWithDecimal(litteral)))
-		return (0);
-	return (std::stof(litteral));
+	{
+		std::cout << "impossible" << std::endl;
+		return ;
+	}
+	std::cout << std::stof(litteral) << std::endl;
 }
 
 void	convert(std::string litteral, std::string type)
 {
-	std::cout << "char: " << stringToChar(litteral) << std::endl;
-	std::cout << "int: " << stringToInt(litteral) << std::endl;
-	std::cout << "float: " << stringToFloat(litteral) << std::endl;
-	std::cout << "double: " << stringToDouble(litteral) << std::endl;
+	stringToChar(litteral);
+	stringToInt(litteral);
+	stringToFloat(litteral);
+	stringToDouble(litteral);
 }
