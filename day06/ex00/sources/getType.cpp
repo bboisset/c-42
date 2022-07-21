@@ -1,0 +1,174 @@
+#include "../includes/convert.hpp"
+
+
+/**
+ * @brief A char must be 
+ * - 1 length long
+ * 
+ * @param litteral 
+ * @return bool
+ */
+bool	isChar(std::string litteral)
+{
+	if (litteral.size() != 1)
+		return (false);
+	return (true);
+}
+
+bool	isStringBetweenNumbers(std::string litteral, std::string min, std::string max)
+{
+	return (true);
+}
+
+bool	isInStrings(std::string litteral, std::string *strings, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (litteral == strings[i])
+			return (true);
+	}
+	return (false);
+}
+
+/**
+ * @brief Check minimum requirements for number without decimal part
+ * - can be negative
+ * - should contain only digits
+ * 
+ * @param litteral 
+ * @return bool True if litteral is a number without decimal part
+ */
+bool	isNumber(std::string litteral)
+{
+	if (litteral.size() < 1)
+		return (false);
+	if (litteral[0] == '-')
+		litteral = litteral.substr(1);
+	for (int i = 0; i < litteral.size(); i++)
+	{
+		if (!isdigit(litteral[i]))
+			return (false);
+	}
+	return (true);
+}
+
+/**
+ * @brief Check minimum requirements for number with decimal part,
+ * - can be negative
+ * - should contain only digits exept the decimal point
+ * - should contain only one decimal point
+ * - could contain a f at the end of the litteral
+ * 
+ * @param litteral 
+ * @return bool True if litteral is a number with decimal part
+ */
+bool	isNumberWithDecimal(std::string litteral)
+{
+	int	decimalPoint = 0;
+
+	if (litteral.size() < 1)
+		return (false);
+	if (litteral[0] == '-')
+		litteral = litteral.substr(1);
+	if (litteral[litteral.size() - 1] == 'f')
+		litteral = litteral.substr(0, litteral.size() - 1);
+	for (int i = 0; i < litteral.size(); i++)
+	{
+		if (litteral[i] == '.')
+			decimalPoint++;
+		if (!isdigit(litteral[i]) && litteral[i] != '.')
+			return (false);
+	}
+	if (decimalPoint > 1)
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief An int must
+ * - be between -2147483648 and 2147483647 ❌
+ * - be composed of digits
+ * - can start with a '-'
+ * 
+ * @param litteral 
+ * @return bool 
+ */
+bool	isInt(std::string litteral)
+{
+	if (!(isNumber(litteral)))
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief An float must
+ * - be between -3.402823466e+38 and 3.402823466e+38
+ * - be composed of digits and '.'
+ * - contain a '.'
+ * - contain a 'f' at the end
+ * - can start with a '-'
+ * 
+ * @param litteral 
+ * @return bool
+ */
+bool	isFloat(std::string litteral)
+{
+	std::string	validFloat[3] = {
+		"-inff",
+		"+inff",
+		"nanf",
+	};
+
+	if (isInStrings(litteral, validFloat, 3))
+		return (true);
+	if (litteral.find(".") == std::string::npos)
+		return (false);
+	if (litteral.rfind("f") != litteral.size() - 1)
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief An double must
+ * - be between -1.7976931348623157e+308 and 1.7976931348623157e+308
+ * - be composed of digits
+ * - contain a '.'
+ * - can start with a '-'
+ * 
+ * @param litteral 
+ * @return bool
+ */
+bool	isDouble(std::string litteral)
+{
+	std::string	validDouble[3] = {
+		"-inf",
+		"+inf",
+		"nan",
+	};
+
+	if (isInStrings(litteral, validDouble, 3))
+		return (true);
+	if (litteral.find(".") == std::string::npos)
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief Get the type of given litteral. Valid
+ * types are: int, float, double, char.
+ * 
+ * @param litteral 
+ * @return std::string [int, float, double, char, invalid]
+ */
+std::string	getLitteralType(std::string litteral)
+{
+	if (isFloat(litteral))
+		return ("float");
+	else if (isDouble(litteral))
+		return ("double");
+	else if (isInt(litteral))
+		return ("int");
+	else if (isChar(litteral))
+		return ("char");
+	return ("invalid");
+}
