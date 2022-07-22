@@ -26,11 +26,11 @@ void	testBureaucratLevel(int level){
 
 void	testIncreaseGrade(int startLevel){
 	try {
-		Bureaucrat	bureaucrat("bureaucrat", startLevel);
+		Bureaucrat	bureaucrat("Tom", startLevel);
 
 		std::cout << "Bureaucrat init: " << bureaucrat.getName() << " with grade " << bureaucrat.getGrade() << std::endl;
 		bureaucrat.increaseGrade();
-		std::cout << "Bureaucrat increaseGrade: " << bureaucrat.getName() << " with grade " << bureaucrat.getGrade() << std::endl;
+		std::cout << "Bureaucrat after increase : " << bureaucrat << std::endl;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -38,11 +38,11 @@ void	testIncreaseGrade(int startLevel){
 
 void	testDecreaseGrade(int startLevel){
 	try {
-		Bureaucrat	bureaucrat("bureaucrat", startLevel);
+		Bureaucrat	bureaucrat("Jerry", startLevel);
 
 		std::cout << "Bureaucrat init: " << bureaucrat.getName() << " with grade " << bureaucrat.getGrade() << std::endl;
 		bureaucrat.decreaseGrade();
-		std::cout << "Bureaucrat after decrease: " << bureaucrat.getName() << " with grade " << bureaucrat.getGrade() << std::endl;
+		std::cout << "Bureaucrat after decrease : " << bureaucrat << std::endl;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}

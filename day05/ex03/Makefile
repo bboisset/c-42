@@ -28,9 +28,6 @@ $(NAME): $(OBJSRCS) $(DEPS)
 
 all: $(NAME)
 
-#.cpp.o:
-#	$(CC) $(CFLAGS) -c $<
-
 clean:
 	rm -f $(OBJSRCS)
 	rm -f *_shrubbery

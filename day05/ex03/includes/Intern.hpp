@@ -6,9 +6,14 @@
 # include "PresidentialPardonForm.hpp"
 # include <string>
 
+/**
+ * @brief Class Intern is only dedicated to the creation of AForms.
+ */
 class Intern {
 	private:
-		int	_getFormIndex(std::string const &formName) const;
+		int		getFormIndex(std::string const &formName) const;
+		AForm	*getFormConstructor(int formIndex, std::string target) const;
+
 		void (*_formConstructors[3])() = {};
 		std::string	_formNames[3];
 	public:

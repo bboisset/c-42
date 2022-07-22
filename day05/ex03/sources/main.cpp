@@ -1,9 +1,4 @@
-#include "../includes/Bureaucrat.hpp"
-#include "../includes/AForm.hpp"
-#include "../includes/ShrubberyCreationForm.hpp"
-#include "../includes/RobotomyRequestForm.hpp"
-#include "../includes/PresidentialPardonForm.hpp"
-#include <iostream>
+#include "../includes/Intern.hpp"
 
 void	waitUserInput(){
 	std::cout << "Press any key to continue..." << std::endl;
@@ -18,8 +13,23 @@ void	runTest(std::string testName, void (*test)()) {
 		<< std::endl << std::endl;
 }
 
+void	createForms()
+{
+	Intern	intern;
 
-int	main(void){
+	AForm *form1 = intern.makeForm("robotomy request", "robot");
+	AForm *form2 = intern.makeForm("presidential pardon", "president");
+	AForm *form3 = intern.makeForm("shrubbery creation", "shrub");
+	AForm *invalidForm = intern.makeForm("invalid form", "invalid target");
 
+	delete form1;
+	delete form2;
+	delete form3;
+	delete invalidForm;
+}
+
+int	main(void)
+{
+	runTest("Creation des 3 formulaires possibles", createForms);
 	return (0);
 }

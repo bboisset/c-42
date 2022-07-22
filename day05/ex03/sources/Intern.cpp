@@ -1,19 +1,9 @@
 #include "../includes/Intern.hpp"
 
 Intern::Intern(void)
-	: _formConstructors{
-		&Intern::_makeRobotomyRequestForm,
-		ShrubberyCreationForm::ShrubberyCreationForm,
-		PresidentialPardonForm::PresidentialPardonForm
-	}, 
-	_formNames{
-		"ShrubberyCreationForm",
-		"RobotomyRequestForm",
-		"PresidentialPardonForm"
-	}
 {
-	/** Silence is golden **/
 }
+
 
 Intern::Intern(Intern const &src)
 {
@@ -31,20 +21,47 @@ Intern &Intern::operator=(Intern const &intern)
 	return *this;
 }
 
-int	Intern::_getFormIndex(std::string const &formName) const
+int	Intern::getFormIndex(std::string const &formName) const
 {
+	std::string	formNames[] = {
+		"ShrubberyCreationForm",
+		"RobotomyRequestForm",
+		"PresidentialPardonForm"
+	};
 	for (int i = 0; i < 3; i++) {
-		if (this->_formNames[i] == formName)
+		if (formNames[i] == formName)
 			return (i);
 	}
 	return (-1);
 }
 
+AForm *Intern::getFormConstructor(int formIndex, std::string target) const
+{
+	AForm	*form(NULL);
+
+	switch (formIndex)
+	{
+		case 0:
+			form = new ShrubberyCreationForm(target);
+			break;
+		case 1:
+			form = new RobotomyRequestForm(target);
+			break;
+		case 2:
+			form = new PresidentialPardonForm(target);
+			break;
+		default:
+			form = NULL;
+			break;
+	}
+	return (form);
+}
+
 AForm	*Intern::makeForm(std::string const &formName, std::string const &formTarget)
 {
-	AForm	*newForm;
 	int		formIndex;
 
-	formIndex = this->_getFormIndex(formName);
-	std::cout << "Intern::makeForm: formIndex = " << formIndex << std::endl;
+	formIndex = this->getFormIndex(formName);
+	//handle invalid form name
+	return (this->getFormConstructor(formIndex, formTarget));
 }
