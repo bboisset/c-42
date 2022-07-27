@@ -4,9 +4,15 @@ SRCS =	sources/main.cpp \
 		sources/convert.cpp \
 		sources/getType.cpp
 
+TESTSSRCS = sources/tests.cpp \
+			sources/convert.cpp \
+			sources/getType.cpp
+
 DEPS =	includes/convert.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
+
+TESTOBJSRCS = $(TESTSSRCS:.cpp=.o)
 
 CC = g++
 
@@ -17,13 +23,20 @@ $(NAME): $(OBJSRCS) $(DEPS)
 	$(CC) $(CFLAGS) $(OBJSRCS) -o $(NAME)
 	@echo "\033[32m[Success !]"
 
-all: $(NAME)
+test: $(TESTOBJSRCS) $(DEPS)
+	@echo "\033[33m[Test in progress...]\033"
+	$(CC) $(CFLAGS) $(TESTOBJSRCS) -o $(NAME)_test
+	@echo "\033[32m[Success !]"
+
+all: $(NAME) test
 
 clean:
 	rm -f $(OBJSRCS)
+	rm -f $(TESTOBJSRCS)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME)_test
 
 re: fclean all
 

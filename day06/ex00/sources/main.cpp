@@ -1,6 +1,5 @@
 # include "../includes/convert.hpp"
 
-//TODO il faut gerer les nombres min et max
 int	main(int argc, char *argv[])
 {
 	std::string	type;

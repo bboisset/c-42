@@ -1,12 +1,54 @@
 #include "../includes/convert.hpp"
 
+/**
+ * @brief Print `inf` or `nan` converted to double or float
+ * 
+ * @param litteral Muste be a litteral `inf` or `nan`
+ * @param type Must be `float` or `double`
+ * @return True if it's a valid `inf` or `nan` float or double
+ */
+bool	prinConvertedNanInf(std::string &litteral, 
+	std::string litteralType, std::string type)
+{
+	std::string	validFloat[3] = {
+		"-inff",
+		"+inff",
+		"nanf",
+	};
+	std::string	validDouble[3] = {
+		"-inf",
+		"+inf",
+		"nan",
+	};
+
+	if (type != "float" && type != "double"
+		|| (litteralType != "float" && litteralType != "double"))
+		return (false);
+	if (isInStrings(litteral, validFloat, 3) == -1
+		&& isInStrings(litteral, validDouble, 3) == -1)
+		return (false);
+	//std::cout << "type : " << type << " | litteralType : " << litteralType << std::endl;
+	if (litteralType == "float")
+	{
+		if (type == "float")
+			std::cout << litteral << std::endl;
+		else
+			std::cout << litteral.substr(0, litteral.size() - 1) << std::endl;
+	}
+	else if (litteralType == "double")
+	{
+		if (type == "double")
+			std::cout << litteral << std::endl;
+		else
+			std::cout << litteral << "f" << std::endl;
+	}
+	return (true);
+}
+
 void	stringToInt(std::string litteral, std::string litteralType)
 {
 	std::cout << "int: ";
-	if (
-		litteralType == "double" 
-		|| litteralType == "float" 
-		|| !(isNumber(litteral)))
+	if (!(isNumber(litteral)))
 	{
 		std::cout << "impossible" << std::endl;
 		return ;
@@ -42,8 +84,12 @@ std::string	floatPrecision(std::string litteral)
 
 void	stringToFloat(std::string litteral, std::string litteralType)
 {
+	std::string	tempFloat;
+	
 	std::cout << "float: ";
-	if (!(isValidNumberWithDecimal(litteral)) || litteralType == "double")
+	if (prinConvertedNanInf(litteral, litteralType, "float"))
+		return ;
+	if (!(isValidFloatingNumber(litteral)))
 	{
 		std::cout << "impossible" << std::endl;
 		return ;
@@ -54,13 +100,41 @@ void	stringToFloat(std::string litteral, std::string litteralType)
 void	stringToDouble(std::string litteral, std::string litteralType)
 {
 	std::cout << "double: ";
-	if (!(isNumber(litteral) || isValidNumberWithDecimal(litteral)))
+	if (prinConvertedNanInf(litteral, litteralType, "double"))
+		return ;
+	if (!(isNumber(litteral) || isValidFloatingNumber(litteral)))
 	{
 		std::cout << "impossible" << std::endl;
 		return ;
 	}
 	std::cout << std::stod(litteral) << floatPrecision(litteral) << std::endl;
 }
+
+void	doubleToAll(double litteral)
+{
+	std::cout << "char: " << static_cast<char>(litteral) << std::endl;
+	std::cout << "int: " << static_cast<int>(litteral) << std::endl;
+	std::cout << "float: " << static_cast<float>(litteral) << std::endl;
+	std::cout << "double: " << litteral << std::endl;
+}
+
+void	floatToAll(float litteral)
+{
+	std::cout << "char: " << static_cast<char>(litteral) << std::endl;
+	std::cout << "int: " << static_cast<int>(litteral) << std::endl;
+	std::cout << "float: " << litteral << std::endl;
+	std::cout << "double: " << static_cast<double>(litteral) << std::endl;
+}
+
+void	intToAll(int litteral)
+{
+	std::cout << "char: " << static_cast<char>(litteral) << std::endl;
+	std::cout << "int: " << litteral << std::endl;
+	std::cout << "float: " << static_cast<float>(litteral) << std::endl;
+	std::cout << "double: " << static_cast<double>(litteral) << std::endl;
+}
+
+
 
 /**
  * @brief Convert a string to char.
@@ -85,10 +159,10 @@ void	stringToChar(std::string litteral, std::string litteralType)
 	std::cout << "'" << litteral[0] << "'" << std::endl;
 }
 
-//on perd les 0 inutiles, est-ce important ?
 void	convert(std::string litteral, std::string type)
 {
-	std::cout << "current type " << type << std::endl;
+	if (type == "double")
+		doubleToAll(std::stod(litteral));
 	stringToChar(litteral, type);
 	stringToInt(litteral, type);
 	stringToFloat(litteral, type);

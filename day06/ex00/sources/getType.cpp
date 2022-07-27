@@ -15,14 +15,14 @@ bool	isChar(std::string litteral)
 	return (true);
 }
 
-bool	isInStrings(std::string litteral, std::string *strings, int size)
+int	isInStrings(std::string litteral, std::string *strings, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
 		if (litteral == strings[i])
-			return (true);
+			return (i);
 	}
-	return (false);
+	return (-1);
 }
 
 /**
@@ -57,7 +57,7 @@ bool	isNumber(std::string litteral)
  * @param litteral 
  * @return bool True if litteral is a number with decimal part
  */
-bool	isValidNumberWithDecimal(std::string litteral)
+bool	isValidFloatingNumber(std::string litteral)
 {
 	int	decimalPoint = 0;
 
@@ -67,6 +67,10 @@ bool	isValidNumberWithDecimal(std::string litteral)
 		litteral = litteral.substr(1);
 	if (litteral[litteral.size() - 1] == 'f')
 		litteral = litteral.substr(0, litteral.size() - 1);
+	if (litteral.find("e+") != std::string::npos)
+		litteral = litteral.substr(0, litteral.find("e+"));
+	else if (litteral.find("e-") != std::string::npos)
+		litteral = litteral.substr(0, litteral.find("e-"));
 	for (int i = 0; i < litteral.size(); i++)
 	{
 		if (litteral[i] == '.')
@@ -125,9 +129,9 @@ bool	isFloat(std::string litteral)
 		"nanf",
 	};
 
-	if (isInStrings(litteral, validFloat, 3))
+	if (isInStrings(litteral, validFloat, 3) > -1)
 		return (true);
-	if (!isValidNumberWithDecimal(litteral))
+	if (!isValidFloatingNumber(litteral))
 		return (false);
 	if (litteral.rfind("f") != litteral.size() - 1)
 		return (false);
@@ -160,9 +164,9 @@ bool	isDouble(std::string litteral)
 		"nan",
 	};
 
-	if (isInStrings(litteral, validDouble, 3))
+	if (isInStrings(litteral, validDouble, 3) > -1)
 		return (true);
-	if (!isValidNumberWithDecimal(litteral))
+	if (!isValidFloatingNumber(litteral) || litteral.find("f") != std::string::npos)
 		return (false);
 	try {
 		tempDouble = std::stod(litteral);
@@ -185,10 +189,10 @@ std::string	getLitteralType(std::string litteral)
 {
 	if (isInt(litteral))
 		return ("int");
- 	if (isFloat(litteral))
-		return ("float");
 	if (isDouble(litteral))
 		return ("double");
+ 	if (isFloat(litteral))
+		return ("float");
 	if (isChar(litteral))
 		return ("char");
 	return ("invalid");
