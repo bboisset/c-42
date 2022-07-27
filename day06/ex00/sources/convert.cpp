@@ -25,7 +25,7 @@ void	stringToInt(std::string litteral, std::string litteralType)
  */
 std::string	floatPrecision(std::string litteral)
 {
-	int		commaPosition = litteral.find(".");
+	int	commaPosition = litteral.find(".");
 	char	numberAfterComma = 0;
 
 	if (litteral[litteral.size() - 1] == 'f')
@@ -33,7 +33,7 @@ std::string	floatPrecision(std::string litteral)
 	if (commaPosition == std::string::npos)
 		return (".0");
 	if (commaPosition == litteral.size() - 1)
-		return ("0");
+		return (".0");
 	numberAfterComma = litteral[commaPosition + 1];
 	if (numberAfterComma == '0')
 		return (".0");
