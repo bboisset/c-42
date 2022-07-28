@@ -1,14 +1,18 @@
 #ifndef DEF_CONVERT_HPP
 # define DEF_CONVERT_HPP
 # include "iostream"
+# include <iomanip>
 # include <limits>
+
+bool	isValidFloatNanInf(std::string litteral);
+bool	isValidDoubleNanInf(std::string litteral);
 
 std::string	getLitteralType(std::string litteral);
 void		convert(std::string litteral, std::string type);
 
-bool		isValidNumberWithDecimal(std::string litteral);
+bool		isValidFloatingNumber(std::string litteral);
 bool		isNumber(std::string litteral);
 
-bool	isInStrings(std::string litteral, std::string *strings, int size);
+int			isInStrings(std::string litteral, std::string *strings, int size);
 
 #endif
