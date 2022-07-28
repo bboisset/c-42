@@ -8,5 +8,5 @@ void	closeFiles(std::ifstream &file, std::ofstream &newFile)
 
 void	handleErrors(std::string error)
 {
-	std::cout << error << std::endl;
+	std::cerr << error << std::endl;
 }

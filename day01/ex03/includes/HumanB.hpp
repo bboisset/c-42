@@ -6,7 +6,7 @@
 /*   By: bboisset <bboisset@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:53:53 by bboisset          #+#    #+#             */
-/*   Updated: 2022/07/15 12:11:30 by bboisset         ###   ########.fr       */
+/*   Updated: 2022/07/28 10:04:23 by bboisset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include "Weapon.hpp"
 # include <string>
 
+/**
+ * @brief Because HumanB could be created
+ * without a Weapon, it should have a * on _weapon
+ */
 class HumanB
 {
 	private:
