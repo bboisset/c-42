@@ -1,22 +1,27 @@
 NAME =	convert
 
-SRCS =	sources/main.cpp \
-		sources/convert.cpp \
-		sources/getType.cpp \
-		sources/handleNanInf.cpp
+SRCS =	main.cpp \
+		convert.cpp \
+		getType.cpp \
+		handleNanInf.cpp
 
-TESTSSRCS = sources/tests.cpp \
-			sources/convert.cpp \
-			sources/getType.cpp \
-			sources/handleNanInf.cpp
+TESTSSRCS = tests.cpp \
+			convert.cpp \
+			getType.cpp \
+			handleNanInf.cpp
 
 DEPS =	includes/convert.hpp
+
+SRCSDIR = sources
+
+SRCS := $(addprefix $(SRCSDIR)/, $(SRCS))
+TESTSSRCS := $(addprefix $(SRCSDIR)/, $(TESTSSRCS))
 
 OBJSRCS = $(SRCS:.cpp=.o)
 
 TESTOBJSRCS = $(TESTSSRCS:.cpp=.o)
 
-CC = g++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -28,7 +33,8 @@ $(NAME): $(OBJSRCS) $(DEPS)
 test: $(TESTOBJSRCS) $(DEPS)
 	@echo "\033[33m[Test in progress...]\033"
 	$(CC) $(CFLAGS) $(TESTOBJSRCS) -o $(NAME)_test
-	@echo "\033[32m[Success !]"
+	@echo "\033[32m[Success! Running test...]\033[38;5;15m"
+	@./$(NAME)_test
 
 all: $(NAME) test
 

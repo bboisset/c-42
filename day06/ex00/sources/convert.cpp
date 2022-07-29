@@ -113,7 +113,7 @@ void	stringToDouble(std::string litteral, std::string litteralType)
 
 void	doubleToAll(std::string litteral)
 {
-	double	tempDouble(std::stod(litteral));
+	double	tempDouble(std::stod(litteral));//std::strtod
 	
 	std::cout << "char: ";
 	if (litteral.length() == 1)
@@ -127,8 +127,8 @@ void	doubleToAll(std::string litteral)
 		std::cout << "impossible" << std::endl;
 	else 
 		std::cout << static_cast<int>(tempDouble) << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(tempDouble) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << tempDouble << std::endl;
+	std::cout << "float: " << static_cast<float>(tempDouble) << "f" << std::endl;
+	std::cout << "double: " << (double)tempDouble << std::endl;
 }
 
 void	floatToAll(std::string litteral)
@@ -147,8 +147,8 @@ void	floatToAll(std::string litteral)
 		std::cout << "impossible" << std::endl;
 	else 
 		std::cout << static_cast<int>(tempFloat) << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << tempFloat << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(tempFloat) << std::endl;
+	std::cout << "float: " << tempFloat << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(tempFloat) << std::endl;
 }
 
 void	intToAll(std::string litteral)
@@ -163,8 +163,8 @@ void	intToAll(std::string litteral)
 	else
 		std::cout << "'*'" << std::endl;
 	std::cout << "int: " << tempInt << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(tempInt) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(tempInt) << std::endl;
+	std::cout << "float: " << static_cast<float>(tempInt) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(tempInt) << std::endl;
 }
 
 void	charToAllTypes(std::string litteral)
@@ -173,8 +173,8 @@ void	charToAllTypes(std::string litteral)
 
 	std::cout << "char: " << tempChar << std::endl;
 	std::cout << "int: " << static_cast<int>(tempChar) << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(tempChar) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(tempChar) << std::endl;
+	std::cout << "float: " << static_cast<float>(tempChar) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(tempChar) << std::endl;
 }
 
 

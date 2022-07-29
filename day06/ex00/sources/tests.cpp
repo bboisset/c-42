@@ -30,9 +30,10 @@ void	testLimits()
 void	testValid()
 {
 	runTest("int 0", fullConversion, "0");
+	runTest("int 1", fullConversion, "1");
 	runTest("int 123", fullConversion, "123");
 	runTest("int -123", fullConversion, "-123");
-	runTest("double 0.0", fullConversion, "0.0");//not working over char
+	runTest("double 0.0", fullConversion, "0.0");
 	runTest("double 123.0", fullConversion, "123.0");
 	runTest("double -123.0", fullConversion, "-123.0");
 	runTest("float 0.0f", fullConversion, "0.0f");

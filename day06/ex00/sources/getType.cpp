@@ -101,7 +101,7 @@ bool	isInt(std::string litteral)
 	try {
 		tempInt = std::stoi(litteral);
 
-		if (tempInt < -2147483648 || tempInt > 2147483647)
+		if (tempInt < std::numeric_limits<int>::min() || tempInt > std::numeric_limits<int>::max())
 			return (false);
 	} catch (std::exception &e) {
 		return (false);
@@ -133,7 +133,7 @@ bool	isFloat(std::string litteral)
 		return (false);
 	try {
 		tempFloat = std::stof(litteral);
-		if (tempFloat < -3.402823466e+38 || tempFloat > 3.402823466e+38)
+		if (tempFloat < std::numeric_limits<float>::min() || tempFloat > std::numeric_limits<float>::max())
 			return (false);
 	} catch (std::exception &e) {
 		return (false);
@@ -155,13 +155,14 @@ bool	isDouble(std::string litteral)
 {
 	double	tempDouble = 0;
 
+	std::cout << "literal: " << litteral << std::endl;
 	if (isValidDoubleNanInf(litteral))
 		return (true);
 	if (!isValidFloatingNumber(litteral) || litteral.find("f") != std::string::npos)
 		return (false);
 	try {
 		tempDouble = std::stod(litteral);
-		if (tempDouble < -1.7976931348623157e+308 || tempDouble > 1.7976931348623157e+308)
+		if (tempDouble < std::numeric_limits<double>::min() || tempDouble > std::numeric_limits<double>::max())
 			return (false);
 	} catch (std::exception &e) {
 		return (false);
