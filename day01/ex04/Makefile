@@ -14,7 +14,7 @@ OBJSRCS = $(SRCS:.cpp=.o)
 
 TEST_OBJSRCS = $(TESTSRCS:.cpp=.o)
 
-CC = g++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

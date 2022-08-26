@@ -8,7 +8,7 @@ DEPS =	includes/Zombie.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 
-CC = g++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
