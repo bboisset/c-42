@@ -1,6 +1,7 @@
 # include "../includes/Fixed.hpp"
 
 const int	Fixed::_bytes = 8;
+//256 is the result of (1 << _bytes);
 
 Fixed::Fixed()
 	: _value(0)
@@ -20,16 +21,28 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
+/**
+ * @brief Construct a new Fixed:: Fixed object from
+ * newVal, by keeping it's fractional part.
+ * 
+ * @param newVal Integer value to be converted to Fixed.
+ */
 Fixed::Fixed(int newVal)
 {
 	std::cout << "Int constructor called" << std::endl;
-	_value = roundf(newVal * 256);
+	setRawBits(newVal << _bytes);
 }
 
+/**
+ * @brief Construct a new Fixed:: Fixed object from
+ * newVal, by keeping it's fractional part.
+ * 
+ * @param newVal Float value to be converted to Fixed.
+ */
 Fixed::Fixed(float newVal)
 {
 	std::cout << "Float constructor called" << std::endl;
-	_value = roundf(newVal * 256.0);
+	setRawBits(roundf(newVal * (1 << _bytes)));
 }
 
 int	Fixed::getRawBits(void) const
@@ -51,16 +64,16 @@ Fixed& Fixed::operator=(const Fixed &fixed)
 
 float	Fixed::toFloat(void) const
 {
-	return (_value / 256.0);
+	return ((float)_value / (1 << _bytes));
 }
 
 int	Fixed::toInt(void) const
 {
-	return (_value / 256);
+	return (getRawBits() >> _bytes);
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
-	out << fixed.getRawBits() / 256.0;
+	out << fixed.toFloat();
 	return (out);
 }
