@@ -21,24 +21,20 @@ void	testLimits()
 {
 	runTest("int Min", fullConversion, "-2147483648");
 	runTest("int Max", fullConversion, "2147483647");
-	runTest("double Min", fullConversion, "-1.7976931348623157e+308");//resultat tres long
-	runTest("double Max", fullConversion, "1.7976931348623157e+308");//resultat tres long pour double
-	runTest("float Min", fullConversion, "-3.402823466e+38");
-	runTest("float Max", fullConversion, "3.402823466e+38");
 }
 
 void	testValid()
 {
 	runTest("int 0", fullConversion, "0");
-	runTest("int 1", fullConversion, "1");
+	runTest("int 40", fullConversion, "40");
 	runTest("int 123", fullConversion, "123");
 	runTest("int -123", fullConversion, "-123");
-	runTest("double 0.0", fullConversion, "0.0");
+	runTest("double 0.0", fullConversion, "0.0");//bug
 	runTest("double 123.0", fullConversion, "123.0");
 	runTest("double -123.0", fullConversion, "-123.0");
-	runTest("float 0.0f", fullConversion, "0.0f");
+	runTest("float 0.0f", fullConversion, "0.0f");//bug
 	runTest("float 123.0f", fullConversion, "123.0f");
-	runTest("float -123.0f", fullConversion, "-123.0f");
+	runTest("float -123.0f", fullConversion, "-123.0f");//bug
 }
 
 void	testNaninf()//resulat bizare avec les int

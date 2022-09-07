@@ -28,7 +28,6 @@ bool	prinConvertedNanInf(std::string &litteral,
 	if (isInStrings(litteral, validFloat, 3) == -1
 		&& isInStrings(litteral, validDouble, 3) == -1)
 		return (false);
-	//std::cout << "type : " << type << " | litteralType : " << litteralType << std::endl;
 	if (litteralType == "float")
 	{
 		if (type == "float")
@@ -113,15 +112,15 @@ void	stringToDouble(std::string litteral, std::string litteralType)
 
 void	doubleToAll(std::string litteral)
 {
-	double	tempDouble(std::stod(litteral));//std::strtod
+	double	tempDouble(std::stod(litteral));
 	
 	std::cout << "char: ";
-	if (litteral.length() == 1)
-		std::cout << static_cast<char>(tempDouble) << std::endl;
-	else if (isValidDoubleNanInf(litteral))
+	if (isValidDoubleNanInf(litteral))
 		std::cout << "impossible" << std::endl;
+	else if (tempDouble < CHAR_MIN || tempDouble > CHAR_MAX)
+		std::cout << "Non displayable" << std::endl;
 	else
-		std::cout << "'*'" << std::endl;
+		std::cout << static_cast<char>(tempDouble) << std::endl;
 	std::cout << "int: ";
 	if (isValidDoubleNanInf(litteral))
 		std::cout << "impossible" << std::endl;
@@ -136,12 +135,12 @@ void	floatToAll(std::string litteral)
 	float	tempFloat(std::stof(litteral));
 
 	std::cout << "char: ";
-	if (litteral.length() == 1)
-		std::cout << static_cast<char>(tempFloat) << std::endl;
-	else if (isValidFloatNanInf(litteral))
+	if (isValidFloatNanInf(litteral))
 		std::cout << "impossible" << std::endl;
+	else if (tempFloat < CHAR_MIN || tempFloat > CHAR_MAX)
+		std::cout << "Non displayable" << std::endl;
 	else
-		std::cout << "'*'" << std::endl;
+		std::cout << static_cast<char>(tempFloat) << std::endl;
 	std::cout << "int: ";
 	if (isValidDoubleNanInf(litteral) || isValidFloatNanInf(litteral))
 		std::cout << "impossible" << std::endl;
@@ -156,12 +155,10 @@ void	intToAll(std::string litteral)
 	int	tempInt(std::stoi(litteral));
 
 	std::cout << "char: ";
-	if (litteral.compare("0") == 0)
-		std::cout << "Non Displayable" << std::endl;
-	else if (litteral.length() == 1)
-		std::cout << static_cast<char>(tempInt) << std::endl;
+	if (tempInt < CHAR_MIN || tempInt > CHAR_MAX)
+		std::cout << "Non displayable" << std::endl;
 	else
-		std::cout << "'*'" << std::endl;
+		std::cout << static_cast<char>(tempInt) << std::endl;
 	std::cout << "int: " << tempInt << std::endl;
 	std::cout << "float: " << static_cast<float>(tempInt) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(tempInt) << std::endl;
@@ -191,11 +188,6 @@ void	stringToChar(std::string litteral, std::string litteralType)
 	if (litteral == "0")
 	{
 		std::cout <<  "Non displayable" << std::endl;
-		return ;
-	}
-	if (litteral.length() > 1)
-	{
-		std::cout << "'*'" << std::endl;
 		return ;
 	}
 	std::cout << "'" << litteral[0] << "'" << std::endl;

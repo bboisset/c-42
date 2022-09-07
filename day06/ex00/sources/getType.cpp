@@ -133,8 +133,6 @@ bool	isFloat(std::string litteral)
 		return (false);
 	try {
 		tempFloat = std::stof(litteral);
-		if (tempFloat < std::numeric_limits<float>::min() || tempFloat > std::numeric_limits<float>::max())
-			return (false);
 	} catch (std::exception &e) {
 		return (false);
 	}
@@ -162,8 +160,6 @@ bool	isDouble(std::string litteral)
 		return (false);
 	try {
 		tempDouble = std::stod(litteral);
-		if (tempDouble < std::numeric_limits<double>::min() || tempDouble > std::numeric_limits<double>::max())
-			return (false);
 	} catch (std::exception &e) {
 		return (false);
 	}

@@ -3,6 +3,8 @@
 # include "iostream"
 # include <iomanip>
 # include <limits>
+# define CHAR_MIN 7
+# define CHAR_MAX 126
 
 bool	isValidFloatNanInf(std::string litteral);
 bool	isValidDoubleNanInf(std::string litteral);
