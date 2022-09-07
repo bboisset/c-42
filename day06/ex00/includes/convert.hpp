@@ -5,6 +5,8 @@
 # include <limits>
 # define CHAR_MIN 7
 # define CHAR_MAX 126
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
 
 bool	isValidFloatNanInf(std::string litteral);
 bool	isValidDoubleNanInf(std::string litteral);

@@ -124,6 +124,8 @@ void	doubleToAll(std::string litteral)
 	std::cout << "int: ";
 	if (isValidDoubleNanInf(litteral))
 		std::cout << "impossible" << std::endl;
+	else if (tempDouble < INT_MIN || tempDouble > INT_MAX)
+		std::cout << "Non displayable" << std::endl;
 	else 
 		std::cout << static_cast<int>(tempDouble) << std::endl;
 	std::cout << "float: " << static_cast<float>(tempDouble) << "f" << std::endl;
@@ -144,6 +146,8 @@ void	floatToAll(std::string litteral)
 	std::cout << "int: ";
 	if (isValidDoubleNanInf(litteral) || isValidFloatNanInf(litteral))
 		std::cout << "impossible" << std::endl;
+	else if (tempFloat < INT_MIN || tempFloat > INT_MAX)
+		std::cout << "Non displayable" << std::endl;
 	else 
 		std::cout << static_cast<int>(tempFloat) << std::endl;
 	std::cout << "float: " << tempFloat << "f" << std::endl;
