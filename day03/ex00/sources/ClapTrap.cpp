@@ -19,6 +19,12 @@ ClapTrap::ClapTrap(std::string name)
 	std::cout << "ClapTrap name constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap(ClapTrap const &clapTrap)
+{
+	std::cout << "ClapTrap copy constructor called" << std::endl;
+	*this = clapTrap;
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << m_name << " has been destroyed" << std::endl;

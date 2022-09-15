@@ -24,6 +24,13 @@ ScavTrap::ScavTrap(std::string name)
 	m_attackDamage = m_defaultAttackDamage;
 }
 
+ScavTrap::ScavTrap(ScavTrap const & scavTrap)
+	: ClapTrap(scavTrap)
+{
+	std::cout << "ScavTrap copy constructor called" << std::endl;
+	*this = scavTrap;
+}
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << m_name << " has been destroyed" << std::endl;
