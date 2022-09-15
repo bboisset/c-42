@@ -1,9 +1,11 @@
-NAME = claptrap
+NAME = scavtrap
 
 SRCS =	sources/main.cpp \
-		sources/ClapTrap.cpp
+		sources/ClapTrap.cpp \
+		sources/ScavTrap.cpp
 
-DEPS =	includes/ClapTrap.hpp
+DEPS =	includes/ClapTrap.hpp \
+		includes/ScavTrap.hpp
 
 OBJSRCS = $(SRCS:.cpp=.o)
 

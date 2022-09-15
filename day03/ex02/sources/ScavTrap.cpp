@@ -29,6 +29,16 @@ ScavTrap::~ScavTrap()
 	std::cout << "ScavTrap " << m_name << " has been destroyed" << std::endl;
 }
 
+ScavTrap &ScavTrap::operator=(const ScavTrap & rhs)
+{
+	std::cout << "ScavTrap assignation operator called" << std::endl;
+	m_name = rhs.m_name;
+	m_hitPoints = rhs.m_hitPoints;
+	m_energyPoints = rhs.m_energyPoints;
+	m_attackDamage = rhs.m_attackDamage;
+	return *this;
+}
+
 void	ScavTrap::guardGate()
 {
 	std::cout << "ScavTrap " 

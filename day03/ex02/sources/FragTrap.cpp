@@ -29,6 +29,16 @@ FragTrap::~FragTrap()
 	std::cout << "FragTrap " << m_name << " has been destroyed" << std::endl;
 }
 
+FragTrap &FragTrap::operator=(const FragTrap & rhs)
+{
+	std::cout << "FragTrap assignation operator called" << std::endl;
+	m_name = rhs.m_name;
+	m_hitPoints = rhs.m_hitPoints;
+	m_energyPoints = rhs.m_energyPoints;
+	m_attackDamage = rhs.m_attackDamage;
+	return *this;
+}
+
 void	FragTrap::getInformation() const
 {
 	std::cout << "FragTrap ";

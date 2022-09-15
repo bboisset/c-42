@@ -25,6 +25,15 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap " << m_name << " has been destroyed" << std::endl;
 }
 
+ClapTrap& ClapTrap::operator=(const ClapTrap & rhs)
+{
+	m_name = rhs.m_name;
+	m_hitPoints = rhs.m_hitPoints;
+	m_energyPoints = rhs.m_energyPoints;
+	m_attackDamage = rhs.m_attackDamage;
+	return (*this);
+}
+
 /**
  ** @brief Determine if the ClapTrap can perform an action with x cost
  ** - If the ClapTrap has not enough energy points, return false
