@@ -1,8 +1,7 @@
 NAME =	trueType
 
 SRCS =	main.cpp \
-		trueType.cpp \
-		Base.cpp
+		trueType.cpp
 
 
 DEPS =	includes/Base.hpp \
@@ -25,7 +24,7 @@ $(NAME): $(OBJSRCS) $(DEPS)
 	$(CC) $(CFLAGS) $(OBJSRCS) -o $(NAME)
 	@echo "\033[32m[Success !]"
 
-all: $(NAME) test
+all: $(NAME)
 
 clean:
 	rm -f $(OBJSRCS)
