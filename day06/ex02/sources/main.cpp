@@ -18,8 +18,10 @@ void	runTest(std::string testName, void (*test)())
 void    testTrueType()
 {
     Base *p = generate();
-    std::cout << "Found type: ";
+    std::cout << "Found type (p): ";
     identify(p);
+	std::cout << "Found type (*p): ";
+	identify(*p);
     delete p;
 }
 
