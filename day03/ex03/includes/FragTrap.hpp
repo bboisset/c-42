@@ -13,6 +13,7 @@ class FragTrap : public ClapTrap
 	public:
 		FragTrap();
 		FragTrap(std::string name);
+		FragTrap(FragTrap const &fragTrap);
 		~FragTrap();
 		void	getInformation() const;
 		void	highFiveGuys(void);
