@@ -2,6 +2,7 @@
 # define DEF_ROBOTONOMY_REQUEST_FORM_HPP
 # include "AForm.hpp"
 # include <ctime>
+# include <stdlib.h>
 
 class RobotomyRequestForm : public AForm {
 	private:

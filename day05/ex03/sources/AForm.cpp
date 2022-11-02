@@ -1,31 +1,31 @@
 #include "../includes/AForm.hpp"
 
 AForm::AForm(void)
-	: _name("*blank name*"), _isSigned(false), _requiredGradeToSign(150), _requiredGradeToExecute(150), _target("*blank target*")
+	: _name("*blank name*"), _target("*blank target*"), _isSigned(false), _requiredGradeToSign(150), _requiredGradeToExecute(150)
 {
 }
 
 AForm::AForm(std::string const &name, int requiredGradeToSign, int requiredGradeToExecute, std::string const &target)
-	: _name(name), _isSigned(false), _requiredGradeToSign(requiredGradeToSign), _requiredGradeToExecute(requiredGradeToExecute), _target(target)
+	: _name(name), _target(target), _isSigned(false), _requiredGradeToSign(requiredGradeToSign), _requiredGradeToExecute(requiredGradeToExecute)
 {
+	this->verifyGrade();
 }
 
-AForm::AForm(AForm const & form)
-	: _name(form._name), _isSigned(form._isSigned), _requiredGradeToSign(form._requiredGradeToSign), _requiredGradeToExecute(form._requiredGradeToExecute)
+AForm::AForm(AForm const & rhs)
+	: _name(rhs._name), _isSigned(rhs._isSigned), _requiredGradeToSign(rhs._requiredGradeToSign), _requiredGradeToExecute(rhs._requiredGradeToExecute)
 {
+	this->verifyGrade();
 }
 
 AForm::~AForm(void)
 {
 }
 
-AForm &AForm::operator=(AForm const & form)
+AForm &AForm::operator=(AForm const & rhs)
 {
-	if (this != &form)
+	if (this != &rhs)
 	{
-		_isSigned = form._isSigned;
-		_requiredGradeToSign = form._requiredGradeToSign;
-		_requiredGradeToExecute = form._requiredGradeToExecute;
+		_isSigned = rhs._isSigned;
 	}
 	return (*this);
 }
@@ -77,20 +77,39 @@ int	AForm::getRequiredGradeToExecute(void) const
 	return (_requiredGradeToExecute);
 }
 
-const char	*AForm::GradeTooHighException::what() const throw()
+void AForm::verifyGrade(void) const
 {
-	return ("Bureaucrat grade is too high");
+	if (_requiredGradeToSign < 1 || _requiredGradeToExecute < 1)
+		throw AForm::GradeTooHighException();
+	if (_requiredGradeToSign > 150 || _requiredGradeToExecute > 150)
+		throw AForm::GradeTooLowException();
 }
 
-const char	*AForm::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
-	return ("Bureaucrat grade too is too low");
+	return ("Grade too high");
 }
 
-const char	*AForm::FormNotSigned::what() const throw ()
+const char *AForm::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low");
+}
+
+const char *AForm::InsufficientGradeException::what() const throw()
+{
+	return ("Bureaucrat grade is too low to sign this form");
+}
+
+const char *AForm::FormNotSigned::what() const throw()
 {
 	return ("Form need to be sign for execution");
 }
+
+const char *AForm::FileOpenException::what() const throw()
+{
+	return ("ShrubberyCreationForm::FileOpenException: File could not be opened.");
+}
+
 
 std::ostream	&operator<<(std::ostream &os, AForm const &form)
 {

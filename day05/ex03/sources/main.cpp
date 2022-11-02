@@ -20,16 +20,35 @@ void	createForms()
 	AForm *form1 = intern.makeForm("robotomy request", "robot");
 	AForm *form2 = intern.makeForm("presidential pardon", "president");
 	AForm *form3 = intern.makeForm("shrubbery creation", "shrub");
-	AForm *invalidForm = intern.makeForm("invalid form", "invalid target");
+
+	std::cout << *form1 << std::endl << std::endl;
+	std::cout << *form2 << std::endl << std::endl;
+	std::cout << *form3 << std::endl << std::endl;
 
 	delete form1;
 	delete form2;
 	delete form3;
-	delete invalidForm;
+}
+
+/**
+ * `delete invalidForm` will never be executed because of the exception.
+ * thrown by `intern.makeForm`.
+*/
+void	invalid_form()
+{
+	Intern	intern;
+
+	try {
+		AForm *invalidForm = intern.makeForm("invalid form", "invalid");
+		delete invalidForm;
+	} catch (std::exception &e) {
+		std::cout << "Exception catch : " << e.what() << std::endl;
+	}
 }
 
 int	main(void)
 {
-	runTest("Creation des 3 formulaires possibles", createForms);
+	runTest("Creating 3 valid form", createForms);
+	runTest("Creating an invalid form", invalid_form);
 	return (0);
 }

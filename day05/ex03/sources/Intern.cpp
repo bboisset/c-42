@@ -24,9 +24,9 @@ Intern &Intern::operator=(Intern const &intern)
 int	Intern::getFormIndex(std::string const &formName) const
 {
 	std::string	formNames[] = {
-		"ShrubberyCreationForm",
-		"RobotomyRequestForm",
-		"PresidentialPardonForm"
+		"shrubbery creation",
+		"robotomy request",
+		"presidential pardon"
 	};
 	for (int i = 0; i < 3; i++) {
 		if (formNames[i] == formName)
@@ -52,9 +52,13 @@ AForm *Intern::getFormConstructor(int formIndex, std::string target) const
 			break;
 		default:
 			form = NULL;
-			break;
 	}
 	return (form);
+}
+
+const char *Intern::UndefinedFormException::what() const throw()
+{
+	return ("Intern: Undefined form");
 }
 
 AForm	*Intern::makeForm(std::string const &formName, std::string const &formTarget)
@@ -62,6 +66,7 @@ AForm	*Intern::makeForm(std::string const &formName, std::string const &formTarg
 	int		formIndex;
 
 	formIndex = this->getFormIndex(formName);
-	//handle invalid form name
+	if (formIndex == -1)
+		throw Intern::UndefinedFormException();
 	return (this->getFormConstructor(formIndex, formTarget));
 }

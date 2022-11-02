@@ -11,8 +11,8 @@ class AForm {
 		std::string	const _name;
 		std::string	const _target;
 		bool	_isSigned;
-		int		_requiredGradeToSign;
-		int		_requiredGradeToExecute;
+		int	const	_requiredGradeToSign;
+		int	const	_requiredGradeToExecute;
 
 		/** Member functions **/
 		virtual void formAction(void) const = 0;
@@ -20,9 +20,9 @@ class AForm {
 	public:
 		AForm(void);
 		AForm(std::string const & name, int requiredGradeToSign, int requiredGradeToExecute, std::string const &target);
-		AForm(AForm const & form);
+		AForm(AForm const & rhs);
 		virtual ~AForm(void) = 0;
-		AForm &operator=(AForm const &form);
+		AForm &operator=(AForm const &rhs);
 
 		/** Member functions **/
 		void	beSigned(Bureaucrat const &bureaucrat);
@@ -35,6 +35,8 @@ class AForm {
 		int			getRequiredGradeToSign(void) const;
 		int			getRequiredGradeToExecute(void) const;
 
+		void		verifyGrade(void) const;
+
 		/** Exceptions **/
 		class GradeTooHighException : public std::exception {
 			public:
@@ -44,7 +46,15 @@ class AForm {
 			public:
 				virtual const char *what() const throw();
 		};
+		class InsufficientGradeException : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
 		class FormNotSigned : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
+		class FileOpenException : public std::exception {
 			public:
 				virtual const char *what() const throw();
 		};

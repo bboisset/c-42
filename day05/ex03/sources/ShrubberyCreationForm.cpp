@@ -32,10 +32,9 @@ void	ShrubberyCreationForm::buildTreeFile(void) const
 	std::string	filename(this->getTarget() + "_shrubbery");
 	std::ofstream treeFile;
 
-	treeFile.open(filename, std::ofstream::out | std::ofstream::app);
-	//Faut il verifier si le fichier existe deja
-	//si oui le supprimer et recommencer du debut ?
-
+	treeFile.open(filename.c_str(), std::ofstream::out | std::ofstream::app);
+	if (!treeFile.is_open())
+		throw AForm::FileOpenException();
 	treeFile << "               ,@@@@@@@,             " << std::endl;
 	treeFile << "       ,,,.   ,@@@@@@/@@,  .oo8888o.  " << std::endl;
 	treeFile << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o " << std::endl;

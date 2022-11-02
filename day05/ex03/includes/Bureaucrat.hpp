@@ -17,9 +17,14 @@ class Bureaucrat {
 		Bureaucrat &operator=(Bureaucrat const &bureaucrat);
 
 		Bureaucrat(std::string const & name, int authorizationLevel);
+
+		/* Getters */
 		std::string getName(void) const;
-		int getGrade(void) const;
+		int 		getGrade(void) const;
+
+		/* Setters */
 		void setAuthorizationLevel(int authorizationLevel);
+		
 		int	increaseGrade(void);
 		int	decreaseGrade(void);
 		bool	signForm(AForm & form);

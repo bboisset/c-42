@@ -21,6 +21,9 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
+.cpp.o :
+	$(CC) $(CFLAGS) -c $< -o ${<:.cpp=.o}
+
 $(NAME): $(OBJSRCS) $(DEPS)
 	@echo "\033[33m[Compiliation in progress...]\033"
 	$(CC) $(CFLAGS) $(OBJSRCS) -o $(NAME)

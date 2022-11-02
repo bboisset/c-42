@@ -14,7 +14,7 @@ class Intern {
 		int		getFormIndex(std::string const &formName) const;
 		AForm	*getFormConstructor(int formIndex, std::string target) const;
 
-		void (*_formConstructors[3])() = {};
+		void (*_formConstructors[3])();
 		std::string	_formNames[3];
 	public:
 		Intern(void);
@@ -23,5 +23,11 @@ class Intern {
 		Intern	&operator=(Intern const &intern);
 		AForm	*makeForm(std::string const &formName, std::string const &formTarget);
 		int		getFormId(std::string const &formName);
+
+		/** Exceptions **/
+		class UndefinedFormException : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
 };
 #endif
