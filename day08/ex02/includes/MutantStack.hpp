@@ -13,7 +13,8 @@ public:
 	}
 	MutantStack<T>& operator=(const MutantStack<T>& rhs) 
 	{
-		this->c = rhs.c;
+		if (this != &rhs)
+			this->c = rhs.c;
 		return *this;
 	}
 	~MutantStack(void) {}
@@ -22,5 +23,6 @@ public:
 
 	iterator begin(void) { return this->c.begin(); }
 	iterator end(void) { return this->c.end(); }
+
 };
 #endif
